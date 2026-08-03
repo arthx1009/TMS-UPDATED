@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ink: #030712;
+  --color-panel: #0B1120;
+  --color-surface: #111827;
+  --color-card: #131F33;
+  --color-card-elevated: #18263D;
+  --color-electric: #38BDF8;
+  --color-electric-rgb: 56, 189, 248;
+  --color-brand: #3B82F6;
+  --color-brand-rgb: 59, 130, 246;
+  --color-hover: #60A5FA;
+  --color-cyan: #22D3EE;
+  --color-cyan-rgb: 34, 211, 238;
+  --color-accent: #F97316;
+  --color-gold: #F59E0B;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-text: #F8FAFC;
+  --color-mist: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-text-disabled: #64748B;
+  --color-divider: rgba(255, 255, 255, 0.05);
+  --color-glass: rgba(17, 24, 39, 0.72);
+}
+
+:root,
+[data-theme="dark"] {
+  --color-ink: #030712;
+  --color-text: #F8FAFC;
+  --color-mist: #CBD5E1;
+  --surface-rgb: 17, 24, 39;
+  --grid-rgb: 17, 24, 39;
+  --hairline-06: rgba(56, 189, 248, 0.06);
+  --hairline-10: rgba(56, 189, 248, 0.10);
+  --hairline-15: rgba(56, 189, 248, 0.15);
+  --glass-surface: rgba(17, 24, 39, 0.72);
+}
+
+html { scroll-behavior: auto; background: var(--color-ink); transition: background 0.4s ease; }
+body {
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+::selection { background: var(--color-electric); color: var(--color-ink); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-panel); }
+::-webkit-scrollbar-thumb { background: var(--color-electric); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-hover); }
+
+a, button, input[type="button"], input[type="submit"], input[type="reset"] { cursor: pointer; }
+
+.glass {
+  background: var(--glass-surface);
+  border: 1px solid var(--hairline-12);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.glass-card,
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+}
+
+.glass-card::before,
+.hover-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 30%);
+  transform: translate3d(-12px, -12px, 0) scale(1.08);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 0;
+}
+
+.glass-card:hover,
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.18);
+  background: rgba(17, 24, 39, 0.84);
+}
+
+.glass-card:hover::before,
+.hover-card:hover::before {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Light-mode overrides for hardcoded dark-theme utility classes, so text and
+   surfaces stay clearly readable without having to rewrite every component. */
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--color-electric) 20%, var(--color-cyan) 55%, var(--color-hover) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

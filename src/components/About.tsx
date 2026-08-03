@@ -7,7 +7,7 @@ const CARDS = [
   { icon: HiOutlineEye, title: "Mission", body: "Turn ambitious ideas into production-grade intelligent systems, without cutting corners on rigor." },
   { icon: HiOutlineSparkles, title: "Vision", body: "Become the trusted engineering partner behind the next decade's defining technology products." },
   { icon: HiOutlineBeaker, title: "Research", body: "Dedicated R&D across ML, embeddings and quantum mechanisms — published and applied in the field." },
-  { icon: HiOutlineShieldCheck, title: "Confidentiality", body: "Every engagement is NDA-protected. Source code, models and strategy stay locked to your team." },
+  { icon: HiOutlineShieldCheck, title: "Engineering Excellence", body: "Delivering robust, scalable, and high-performance solutions through modern engineering practices and technical excellence." },
   { icon: HiOutlineGlobeAlt, title: "Global Delivery", body: "Distributed delivery pods serving clients across India, the Gulf, Europe and North America." },
 ];
 
@@ -16,8 +16,8 @@ export default function About() {
     <Section id="about">
       <SectionTitle
         eyebrow="What is TarvyX Mind Systems"
-        title="A confidential engineering partner, not a vendor."
-        sub="TMS operates under strict NDAs across every engagement. Source code, proprietary frameworks, research and architecture are treated as your trade secrets — protected, never disclosed."
+        title="A modern engineering partner built for excellence."
+        sub="TMS delivers thoughtful, high-impact technology solutions through disciplined engineering, deep expertise, and a commitment to performance."
       />
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {CARDS.map((c, i) => (

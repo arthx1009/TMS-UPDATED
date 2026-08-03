@@ -15,6 +15,7 @@ import Research from "./components/Research";
 import Projects from "./components/Projects";
 import WhyChoose from "./components/WhyChoose";
 import Process from "./components/Process";
+import Leadership from "./components/Leadership";
 import Testimonials from "./components/Testimonials";
 import { Blog, FAQ } from "./components/BlogFAQ";
 import { Contact, Footer } from "./components/ContactFooter";
@@ -50,6 +51,7 @@ export default function App() {
         <Projects />
         <WhyChoose />
         <Process />
+        <Leadership />
         <Testimonials />
         <Blog />
         <FAQ />

@@ -4,7 +4,9 @@ import { Section, SectionTitle } from "./UI";
 import {
   HiOutlineCpuChip, HiOutlineCloud, HiOutlineShieldCheck, HiOutlineTruck,
   HiOutlineCircleStack, HiOutlineChatBubbleLeftRight, HiOutlineSwatch,
-  HiOutlineWrenchScrewdriver, HiOutlineWifi, HiOutlineCog6Tooth, HiOutlineBuildingOffice2, HiOutlineBeaker,
+  HiOutlineWrenchScrewdriver, HiOutlineWifi, HiOutlineBuildingOffice2, HiOutlineBeaker,
+  HiOutlineCube, HiOutlineHeart, HiOutlineSparkles, HiOutlineAcademicCap,
+  HiOutlinePhone, HiOutlineBanknotes, HiOutlineShoppingBag,
 } from "react-icons/hi2";
 
 const SERVICES = [
@@ -14,11 +16,17 @@ const SERVICES = [
   { icon: HiOutlineBeaker, title: "Quantum Research", desc: "Applied quantum mechanism research for next-generation computation." },
   { icon: HiOutlineCloud, title: "Cloud Computing", desc: "Cloud-native architecture, migration and cost-optimized infrastructure." },
   { icon: HiOutlineShieldCheck, title: "Cyber Security", desc: "Threat modeling, secure architecture review and hardened delivery pipelines." },
-  { icon: HiOutlineBuildingOffice2, title: "Consulting", desc: "Technology strategy and roadmap consulting for scaling engineering teams." },
+  { icon: HiOutlineHeart, title: "Healthcare & Life Sciences", desc: "Clinical-grade digital products, data platforms, and intelligent care experiences." },
   { icon: HiOutlineSwatch, title: "UI / UX", desc: "Interface design systems that balance clarity, brand and conversion." },
   { icon: HiOutlineWrenchScrewdriver, title: "Embedded Systems", desc: "Firmware and embedded platform engineering for hardware products." },
   { icon: HiOutlineWifi, title: "IoT", desc: "Connected device platforms, from sensor layer to cloud dashboards." },
-  { icon: HiOutlineCog6Tooth, title: "Automation", desc: "Workflow and infrastructure automation that removes manual overhead." },
+  { icon: HiOutlineCube, title: "Robotics", desc: "Control systems, autonomy workflows, and intelligent robotics integrations." },
+  { icon: HiOutlineSparkles, title: "Supply Chain & Logistics", desc: "Operational intelligence, optimization platforms, and resilient logistics systems." },
+  { icon: HiOutlineBuildingOffice2, title: "Hospitality", desc: "Guest experience platforms, service operations, and smart hospitality technology." },
+  { icon: HiOutlineAcademicCap, title: "Education", desc: "Modern learning platforms, digital campuses, and student engagement systems." },
+  { icon: HiOutlinePhone, title: "Telecommunication", desc: "Next-generation connectivity products and secure communication platforms." },
+  { icon: HiOutlineBanknotes, title: "Banking & Finance Services", desc: "Digital banking experiences, compliance tooling, and secure financial products." },
+  { icon: HiOutlineShoppingBag, title: "Consumer & Retail", desc: "Commerce enablement, loyalty platforms, and customer-centric digital experiences." },
   { icon: HiOutlineCircleStack, title: "Enterprise Solutions", desc: "Large-scale enterprise applications built for reliability and scale." },
 ];
 
@@ -65,7 +73,7 @@ export default function Services() {
     <Section id="services">
       <SectionTitle
         eyebrow="Our Core Services"
-        title="Twelve disciplines. One engineering standard."
+        title="Eighteen disciplines. One engineering standard."
         sub="From embedded automotive systems to applied AI research — each service is delivered by a dedicated pod, not a generalist bench."
       />
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

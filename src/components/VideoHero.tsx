@@ -15,7 +15,7 @@ export default function VideoHero({ src }: { src: string }) {
   }, []);
 
   return (
-    <div className="relative h-[380px] md:h-[520px] w-full overflow-hidden rounded-[28px] border border-white/10 bg-black/20 shadow-[0_0_80px_rgba(56,189,248,0.12)]">
+    <div className="relative h-[380px] md:h-[620px] w-full overflow-hidden rounded-[28px] border border-white/10 bg-black/20 shadow-[0_0_80px_rgba(56,189,248,0.12)]">
       <video
         ref={videoRef}
         src={src}

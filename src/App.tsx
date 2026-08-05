@@ -10,7 +10,6 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Industries from "./components/Industries";
 import TechStack from "./components/TechStack";
-import Courses from "./components/Courses";
 import Research from "./components/Research";
 import Projects from "./components/Projects";
 import WhyChoose from "./components/WhyChoose";
@@ -46,7 +45,6 @@ export default function App() {
         <Services />
         <Industries />
         <TechStack />
-        <Courses />
         <Research />
         <Projects />
         <WhyChoose />

@@ -5,8 +5,8 @@ import { Section } from "./UI";
 const STATS = [
   { value: 500, suffix: "+", label: "Projects" },
   { value: 100, suffix: "+", label: "Secure & Confidential" },
-  { value: 199, suffix: "+", label: "Technologies" },
-  { value: 150, suffix: "+", label: "Research Works" },
+  { value: 398, suffix: "+", label: "Technologies" },
+  { value: 460, suffix: "+", label: "Research Works" },
   { value: 99, suffix: "%", label: "Satisfaction" },
   { value: 24, suffix: "/7", label: "Support" },
 ];

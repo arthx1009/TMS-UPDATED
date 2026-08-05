@@ -60,6 +60,24 @@ body {
 
 a, button, input[type="button"], input[type="submit"], input[type="reset"] { cursor: pointer; }
 
+html.modal-open,
+body.modal-open {
+  overscroll-behavior: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.modal-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
+}
+
 .glass {
   background: var(--glass-surface);
   border: 1px solid var(--hairline-12);

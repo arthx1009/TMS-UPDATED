@@ -52,7 +52,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="relative h-[380px] md:h-[520px] -mt-20 md:-mt-28"
+          className="relative h-[380px] md:h-[520px] -mt-4 md:-mt-8"
         >
           <Scene3D />
         </motion.div>

@@ -3,12 +3,12 @@ import { Section, SectionTitle, GlassCard } from "./UI";
 import { HiOutlineLightBulb, HiOutlineEye, HiOutlineShieldCheck, HiOutlineGlobeAlt, HiOutlineBeaker, HiOutlineSparkles } from "react-icons/hi2";
 
 const CARDS = [
-  { icon: HiOutlineLightBulb, title: "Who We Are", body: "An engineering studio building AI, software, automotive and quantum systems for enterprise clients." },
+  { icon: HiOutlineLightBulb, title: "Who We Are", body: "An engineering studio building AI, software, automotive and quantum systems." },
   { icon: HiOutlineEye, title: "Mission", body: "Turn ambitious ideas into production-grade intelligent systems, without cutting corners on rigor." },
   { icon: HiOutlineSparkles, title: "Vision", body: "Become the trusted engineering partner behind the next decade's defining technology products." },
   { icon: HiOutlineBeaker, title: "Research", body: "Dedicated R&D across ML, embeddings and quantum mechanisms — published and applied in the field." },
   { icon: HiOutlineShieldCheck, title: "Engineering Excellence", body: "Delivering robust, scalable, and high-performance solutions through modern engineering practices and technical excellence." },
-  { icon: HiOutlineGlobeAlt, title: "Global Delivery", body: "Distributed delivery pods serving clients across India, the Gulf, Europe and North America." },
+  { icon: HiOutlineGlobeAlt, title: "Global Delivery", body: "Distributed delivery pods serving  across India and on time process" },
 ];
 
 export default function About() {

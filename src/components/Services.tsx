@@ -11,6 +11,7 @@ import {
 } from "react-icons/hi2";
 
 const SERVICES: ServiceCardData[] = [
+  { icon: HiOutlineAcademicCap, title: "Education", desc: "Modern learning platforms, digital campuses, and student engagement systems." },
   { icon: HiOutlineCpuChip, title: "Software Engineering", desc: "Full-stack, high-performance product engineering from architecture to deployment." },
   { icon: HiOutlineChatBubbleLeftRight, title: "AI & Machine Learning", desc: "LLM applications, embeddings, computer vision and predictive systems." },
   { icon: HiOutlineTruck, title: "Automotive Engineering", desc: "Embedded automotive software, ADAS support tooling and vehicle intelligence." },
@@ -24,7 +25,6 @@ const SERVICES: ServiceCardData[] = [
   { icon: HiOutlineCube, title: "Robotics", desc: "Control systems, autonomy workflows, and intelligent robotics integrations." },
   { icon: HiOutlineSparkles, title: "Supply Chain & Logistics", desc: "Operational intelligence, optimization platforms, and resilient logistics systems." },
   { icon: HiOutlineBuildingOffice2, title: "Hospitality", desc: "Guest experience platforms, service operations, and smart hospitality technology." },
-  { icon: HiOutlineAcademicCap, title: "Education", desc: "Modern learning platforms, digital campuses, and student engagement systems." },
   { icon: HiOutlinePhone, title: "Telecommunication", desc: "Next-generation connectivity products and secure communication platforms." },
   { icon: HiOutlineBanknotes, title: "Banking & Finance Services", desc: "Digital banking experiences, compliance tooling, and secure financial products." },
   { icon: HiOutlineShoppingBag, title: "Consumer & Retail", desc: "Commerce enablement, loyalty platforms, and customer-centric digital experiences." },

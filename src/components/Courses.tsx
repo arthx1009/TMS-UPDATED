@@ -6,24 +6,51 @@ import { HiOutlineStar, HiOutlineClock, HiOutlineUserGroup, HiOutlineXMark, HiOu
 
 const FILTER_CHIPS = [
   "All",
-  "AI",
+  "AI/ML",
+  "Data",
   "Software",
   "Cloud",
-  "Automotive",
+  "Security",
+  "Blockchain",
   "Quantum",
   "Embedded",
-  "Cyber Security",
+  "Immersive",
+  "Product",
 ];
 
 const filterPredicates: Record<string, (course: Course) => boolean> = {
   All: () => true,
-  AI: (course) => course.category.toLowerCase().includes("artificial") || course.tags.some((tag) => tag.toLowerCase().includes("ai")),
-  Software: (course) => course.category.toLowerCase().includes("software") || course.tags.some((tag) => tag.toLowerCase().includes("react") || tag.toLowerCase().includes("node")),
-  Cloud: (course) => course.category.toLowerCase().includes("cloud") || course.tags.some((tag) => tag.toLowerCase().includes("aws") || tag.toLowerCase().includes("kubernetes") || tag.toLowerCase().includes("docker")),
-  Automotive: (course) => course.category.toLowerCase().includes("automotive") || course.tags.some((tag) => tag.toLowerCase().includes("adas") || tag.toLowerCase().includes("embedded")),
-  Quantum: (course) => course.category.toLowerCase().includes("quantum"),
-  Embedded: (course) => course.tags.some((tag) => tag.toLowerCase().includes("embedded")),
-  "Cyber Security": (course) => course.category.toLowerCase().includes("security") || course.tags.some((tag) => tag.toLowerCase().includes("security") || tag.toLowerCase().includes("pentesting")),
+  "AI/ML": (course) =>
+    course.category.toLowerCase().includes("ai") ||
+    course.category.toLowerCase().includes("ml") ||
+    course.tags.some((tag) => ["ai", "ml", "llm", "genai", "nlp", "machine learning"].some((term) => tag.toLowerCase().includes(term))),
+  Data: (course) =>
+    course.category.toLowerCase().includes("data") ||
+    course.tags.some((tag) => ["data", "sql", "analytics", "statistics"].some((term) => tag.toLowerCase().includes(term))),
+  Software: (course) =>
+    course.category.toLowerCase().includes("software") ||
+    course.tags.some((tag) => ["full stack", "mobile", "game", "web"].some((term) => tag.toLowerCase().includes(term))),
+  Cloud: (course) =>
+    course.category.toLowerCase().includes("cloud") ||
+    course.tags.some((tag) => ["aws", "azure", "gcp", "devops", "kubernetes"].some((term) => tag.toLowerCase().includes(term))),
+  Security: (course) =>
+    course.category.toLowerCase().includes("security") ||
+    course.tags.some((tag) => ["security", "cyber", "pentesting"].some((term) => tag.toLowerCase().includes(term))),
+  Blockchain: (course) =>
+    course.category.toLowerCase().includes("blockchain") ||
+    course.tags.some((tag) => ["blockchain", "web3", "smart contracts"].some((term) => tag.toLowerCase().includes(term))),
+  Quantum: (course) =>
+    course.category.toLowerCase().includes("quantum") ||
+    course.tags.some((tag) => tag.toLowerCase().includes("quantum")),
+  Embedded: (course) =>
+    course.category.toLowerCase().includes("embedded") ||
+    course.tags.some((tag) => ["embedded", "iot", "firmware"].some((term) => tag.toLowerCase().includes(term))),
+  Immersive: (course) =>
+    course.category.toLowerCase().includes("immersive") ||
+    course.tags.some((tag) => ["ar", "vr", "spatial"].some((term) => tag.toLowerCase().includes(term))),
+  Product: (course) =>
+    course.category.toLowerCase().includes("product") ||
+    course.tags.some((tag) => ["product", "roadmap"].some((term) => tag.toLowerCase().includes(term))),
 };
 
 function CourseCard({ c, onOpen, index }: { c: Course; onOpen: (trigger: HTMLElement) => void; index: number }) {

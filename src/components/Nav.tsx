@@ -34,7 +34,7 @@ export default function Nav() {
       >
         <a href="#top" className="flex items-center gap-2.5 group">
           <img src={logoUrl} alt="TMS" className="h-12 w-auto transition-transform duration-500 group-hover:rotate-[8deg]" />
-          <span className="font-display font-semibold text-lg tracking-wide hidden sm:block">TarvyX Mind Systems</span>
+          <span className="font-display font-semibold text-lg tracking-wide block">TarvyX Mind Systems</span>
         </a>
 
         <div className="hidden md:flex items-center gap-2">

@@ -56,8 +56,17 @@ function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      onClick={onLearnMore}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onLearnMore();
+        }
+      }}
+      tabIndex={0}
+      role="button"
       style={{ transition: "transform 0.25s ease-out", ...style }}
-      className={`glass glass-card hover-card rounded-2xl p-6 group relative overflow-hidden cursor-default ${active ? "border border-cyan-300/20 bg-[rgba(15,23,42,0.95)]" : ""}`}
+      className={`glass glass-card hover-card rounded-2xl p-6 group relative overflow-hidden cursor-pointer ${active ? "border border-cyan-300/20 bg-[rgba(15,23,42,0.95)]" : ""}`}
     >
       <div className="absolute inset-0 rounded-2xl border border-white/10 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" style={{ background: "var(--color-electric)" }} />
@@ -66,7 +75,10 @@ function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number
       <p className="text-[13px] leading-relaxed mb-4" style={{ color: "var(--color-text-muted)" }}>{s.desc}</p>
       <motion.button
         type="button"
-        onClick={onLearnMore}
+        onClick={(event) => {
+          event.stopPropagation();
+          onLearnMore();
+        }}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         transition={{ type: "spring", stiffness: 260, damping: 22 }}

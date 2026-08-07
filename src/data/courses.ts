@@ -19,7 +19,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "3.2k",
     desc: "Build full-stack applications using Python, React, APIs, and cloud deployment.",
-    image: "/education/Python Fulstack.png",
+    image: "/education/python-full-stack.png",
     tags: ["Python", "React", "APIs"],
   },
   {
@@ -30,7 +30,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "2.7k",
     desc: "Master analytics, BI dashboards, SQL, and storytelling for business impact.",
-    image: "/education/Data Analyst.png",
+    image: "/education/data-analyst.png",
     tags: ["Data", "SQL", "Analytics"],
   },
   {
@@ -41,7 +41,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "2.4k",
     desc: "Apply statistics, machine learning, and modeling to solve real-world problems.",
-    image: "/education/DataScience.png",
+    image: "/education/data-science.png",
     tags: ["Python", "Machine Learning", "Modeling"],
   },
   {
@@ -52,7 +52,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "2.1k",
     desc: "Design, train, and deploy scalable machine learning systems.",
-    image: "/education/ML.png",
+    image: "/education/machine-learning-engineer.png",
     tags: ["ML", "MLOps", "Deployment"],
   },
   {
@@ -63,7 +63,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "1.8k",
     desc: "Build natural language and generative AI products with modern transformer stacks.",
-    image: "/education/NLPGen Ai.png",
+    image: "/education/nlp-genai-engineer.png",
     tags: ["NLP", "GenAI", "LLM"],
   },
   {
@@ -74,7 +74,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "2.0k",
     desc: "Implement CI/CD, observability, and resilient operations for modern platforms.",
-    image: "/education/Devops.png",
+    image: "/education/devops-sre.png",
     tags: ["DevOps", "SRE", "Kubernetes"],
   },
   {
@@ -85,7 +85,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "1.5k",
     desc: "Learn defensive security, threat analysis, and risk reduction for digital systems.",
-    image: "/education/Cybersecurity.png",
+    image: "/education/cybersecurity.png",
     tags: ["Security", "Cyber", "Threat Analysis"],
   },
   {
@@ -96,7 +96,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "2.3k",
     desc: "Master cloud architecture, infrastructure-as-code, and service delivery.",
-    image: "/education/cloud computing.png",
+    image: "/education/cloud-computing.png",
     tags: ["Cloud", "AWS", "Azure"],
   },
   {
@@ -107,7 +107,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "1.4k",
     desc: "Build connected hardware and firmware for IoT products and embedded systems.",
-    image: "/education/Embedded IOT.png",
+    image: "/education/embedded-systems-iot.png",
     tags: ["Embedded", "IoT", "Firmware"],
   },
   {
@@ -118,7 +118,7 @@ export const COURSES: Course[] = [
     rating: 4.7,
     students: "1.2k",
     desc: "Create smart contracts, decentralized apps, and blockchain-native products.",
-    image: "/education/Blockchain.png",
+    image: "/education/blockchain-web3.png",
     tags: ["Blockchain", "Web3", "Smart Contracts"],
   },
   {
@@ -129,7 +129,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "2.0k",
     desc: "Build native and cross-platform mobile apps with modern development tools.",
-    image: "/education/Mobile app dev.png",
+    image: "/education/mobile-app-development.png",
     tags: ["Mobile", "iOS", "Android"],
   },
   {
@@ -140,7 +140,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "1.3k",
     desc: "Develop immersive game experiences, real-time graphics, and gameplay systems.",
-    image: "/education/Game dev.png",
+    image: "/education/game-development.png",
     tags: ["Game Dev", "Unity", "Unreal"],
   },
   {
@@ -151,7 +151,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "1.1k",
     desc: "Design spatial computing experiences for AR, VR, and mixed-reality products.",
-    image: "/education/AR VR.png",
+    image: "/education/ar-vr-spatial-computing.png",
     tags: ["AR", "VR", "Spatial"],
   },
   {
@@ -162,7 +162,7 @@ export const COURSES: Course[] = [
     rating: 4.8,
     students: "1.7k",
     desc: "Build AI-enabled products and manage product delivery from concept to launch.",
-    image: "/education/AI product.png",
+    image: "/education/ai-product-engineer.png",
     tags: ["AI", "Product", "Roadmap"],
   },
   {
@@ -173,7 +173,7 @@ export const COURSES: Course[] = [
     rating: 4.9,
     students: "720",
     desc: "Explore quantum algorithms, qubits, and next-generation computing systems.",
-    image: "/education/Quantum com.png",
+    image: "/education/quantum-computing.png",
     tags: ["Quantum", "Qubits", "Algorithms"],
   },
 ];

@@ -251,15 +251,6 @@ const SPACE_PRODUCTS = [
   { name: "ECLIPXA", status: "FUTURE", accent: "pink", title: "Mission Simulation Intelligence", body: "Creates realistic, high-fidelity simulation for aerospace performance, risk and decision planning." },
 ] as const;
 
-const FABRIC_COLORS = [
-  "border-cyan-300/35 bg-cyan-300/10 text-cyan-100",
-  "border-blue-300/35 bg-blue-300/10 text-blue-100",
-  "border-violet-300/35 bg-violet-300/10 text-violet-100",
-  "border-sky-300/35 bg-sky-300/10 text-sky-100",
-  "border-emerald-300/35 bg-emerald-300/10 text-emerald-100",
-  "border-cyan-200/35 bg-cyan-200/10 text-cyan-50",
-] as const;
-
 const PRODUCT_ACCENTS = {
   violet: { border: "border-violet-300/45", soft: "bg-violet-400/10", text: "text-violet-200", glow: "shadow-[0_0_32px_rgba(167,139,250,0.16)]" },
   cyan: { border: "border-cyan-300/45", soft: "bg-cyan-400/10", text: "text-cyan-200", glow: "shadow-[0_0_32px_rgba(34,211,238,0.16)]" },
@@ -335,10 +326,6 @@ function SoftwareEngineeringPanel() {
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{product.items.map((item) => <div key={item} className="flex items-start gap-2 rounded-xl border border-white/10 bg-black/20 px-3 py-3 text-sm text-white/70"><HiOutlineCheckCircle className={`mt-0.5 h-4 w-4 shrink-0 ${accent.text}`} />{item}</div>)}</div>
       </section>
 
-      <section className="rounded-[28px] border border-white/10 bg-black/20 p-6 md:p-7">
-        <div className="font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">Software Intelligence Fabric</div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{["Human Intent", "Requirements", "Architecture", "Code", "Validation", "Deployment", "Runtime System", "Telemetry", "System Memory", "Intelligence", "Improvement", "Evolution"].map((stage, index) => <div key={stage} className={`flex items-center gap-2 rounded-xl border px-3 py-3 ${FABRIC_COLORS[index % FABRIC_COLORS.length]}`}><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-current/40 font-mono text-[9px]">{index + 1}</span><span className="text-xs">{stage}</span></div>)}</div>
-      </section>
     </div>
   );
 }
@@ -390,7 +377,6 @@ function AIMachineLearningPanel() {
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/65">{product.body}</p>
       </section>
 
-      <section className="rounded-[28px] border border-white/10 bg-black/20 p-6 md:p-7"><div className="font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">Software Intelligence Fabric</div><div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{["Human Intent", "Requirements", "Architecture", "Code", "Validation", "Deployment", "Runtime System", "Telemetry", "System Memory", "Intelligence", "Improvement", "Evolution"].map((stage, index) => <div key={stage} className={`flex items-center gap-2 rounded-xl border px-3 py-3 ${FABRIC_COLORS[index % FABRIC_COLORS.length]}`}><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-current/40 font-mono text-[9px]">{index + 1}</span><span className="text-xs">{stage}</span></div>)}</div></section>
     </div>
   );
 }

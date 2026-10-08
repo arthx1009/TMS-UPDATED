@@ -70,12 +70,12 @@ function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number
       tabIndex={0}
       role="button"
       style={{ transition: "transform 0.25s ease-out", ...style }}
-      className={`glass glass-card hover-card rounded-2xl p-6 group relative overflow-hidden cursor-pointer ${active ? "border border-cyan-300/20 bg-[rgba(15,23,42,0.95)]" : ""}`}
+      className={`glass glass-card hover-card rounded-2xl p-5 sm:p-6 group relative flex h-full flex-col overflow-hidden cursor-pointer ${active ? "border border-cyan-300/20 bg-[rgba(15,23,42,0.95)]" : ""}`}
     >
       <div className="absolute inset-0 rounded-2xl border border-white/10 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" style={{ background: "var(--color-electric)" }} />
-      <s.icon className="w-6 h-6 mb-4" style={{ color: "var(--color-electric)" }} />
-      <h3 className="font-display font-semibold text-[15px] mb-1.5">{s.title}</h3>
+      <s.icon className="w-6 h-6 mb-3 sm:mb-4" style={{ color: "var(--color-electric)" }} />
+      <h3 className="font-display font-semibold text-[15px] mb-1.5 break-words">{s.title}</h3>
       <p className="text-[13px] leading-relaxed mb-4" style={{ color: "var(--color-text-muted)" }}>{s.desc}</p>
       <motion.button
         type="button"
@@ -86,7 +86,7 @@ function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.96 }}
         transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        className="text-[12px] font-medium inline-flex items-center gap-1 text-white/60 hover:text-white transition-colors"
+        className="mt-auto min-h-10 -mx-2 inline-flex items-center gap-1 px-2 text-[12px] font-medium text-white/60 transition-colors hover:text-white"
       >
         Learn more <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
       </motion.button>
@@ -115,7 +115,7 @@ export default function Services() {
         title="Eighteen disciplines. One engineering standard."
         sub="From embedded automotive systems to applied AI research — each service is delivered by a dedicated pod, not a generalist bench."
       />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {SERVICES.map((s, i) => (
           <TiltCard key={s.title} s={s} i={i} active={overlayOpen && selectedService?.title === s.title} onLearnMore={() => handleOpen(s)} />
         ))}

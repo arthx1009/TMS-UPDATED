@@ -276,7 +276,7 @@ function SoftwareEngineeringPanel() {
 
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-6 md:p-8">
+      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-4 sm:p-6 md:p-8">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative grid gap-8 xl:grid-cols-[1fr_1.05fr] xl:items-center">
           <div>
@@ -286,10 +286,10 @@ function SoftwareEngineeringPanel() {
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">Human intent, architecture, code, verification and runtime behaviour become one connected intelligence system.</p>
           </div>
 
-          <div className="relative mx-auto h-[350px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)]">
-            <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[28px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)]">
-              <div className="absolute inset-2 rounded-[23px] border border-cyan-300/25" />
-              <img src={tmsLogo} alt="TMS logo" className="relative z-10 h-20 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)]" />
+          <div className="service-domain-diagram relative mx-auto h-[300px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)] sm:h-[350px]">
+            <div className="service-domain-logo absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[20px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)] sm:h-36 sm:w-36 sm:rounded-[28px]">
+              <div className="absolute inset-1.5 rounded-[16px] border border-cyan-300/25 sm:inset-2 sm:rounded-[23px]" />
+              <img src={tmsLogo} alt="TMS logo" className="relative z-10 h-10 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)] sm:h-20" />
             </div>
             {[
               ["HUMAN INTENT", "Understand goals", "left-1/2 top-4 -translate-x-1/2 border-cyan-300/40"],
@@ -297,8 +297,8 @@ function SoftwareEngineeringPanel() {
               ["CODE", "Build with quality", "right-4 top-1/2 -translate-y-1/2 border-cyan-300/40"],
               ["VALIDATION", "Verify correctness", "left-8 bottom-5 border-emerald-300/40"],
               ["EVOLUTION", "Improve continuously", "right-8 bottom-5 border-pink-300/40"],
-            ].map(([label, detail, position]) => (
-              <div key={label} className={`absolute ${position} z-10 w-[150px] rounded-2xl border bg-slate-950/80 px-3 py-2.5 backdrop-blur-xl`}>
+            ].map(([label, detail, position], index) => (
+              <div key={label} className={`service-domain-node service-domain-node-${index} absolute ${position} z-10 w-[112px] rounded-xl border bg-slate-950/80 px-2 py-2 backdrop-blur-xl sm:w-[150px] sm:rounded-2xl sm:px-3 sm:py-2.5`}>
                 <div className="font-mono text-[9px] tracking-[0.18em] text-white/85">{label}</div>
                 <div className="mt-1 text-[11px] text-white/55">{detail}</div>
               </div>
@@ -314,7 +314,7 @@ function SoftwareEngineeringPanel() {
 
       <section>
         <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">Our Software Intelligence Products</div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {SOFTWARE_PRODUCTS.map((item, index) => (
             <button key={item.name} type="button" onClick={() => setSelectedProduct(index)} className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition ${selectedProduct === index ? `${PRODUCT_ACCENTS[item.accent].border} ${PRODUCT_ACCENTS[item.accent].soft} ${PRODUCT_ACCENTS[item.accent].glow}` : "border-white/10 bg-white/5 hover:border-white/30"}`}>
               <div className={`absolute inset-x-0 top-0 h-1 ${PRODUCT_ACCENTS[item.accent].soft}`} />
@@ -326,9 +326,9 @@ function SoftwareEngineeringPanel() {
         </div>
       </section>
 
-      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-6 md:p-7`}>
+      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-4 sm:p-6 md:p-7`}>
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-3xl font-semibold text-white">{product.name}</h4><p className={`mt-2 max-w-2xl text-lg ${accent.text}`}>{product.title}</p></div>
+          <div className="min-w-0"><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{product.name}</h4><p className={`mt-2 max-w-2xl text-base sm:text-lg ${accent.text}`}>{product.title}</p></div>
           <span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span>
         </div>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/65">{product.body}</p>
@@ -350,7 +350,7 @@ function AIMachineLearningPanel() {
 
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-6 md:p-8">
+      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-4 sm:p-6 md:p-8">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative grid gap-8 xl:grid-cols-[1fr_1.05fr] xl:items-center">
           <div>
@@ -360,11 +360,11 @@ function AIMachineLearningPanel() {
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">We engineer AI systems not only to recognise patterns, but to learn from experience, construct knowledge, understand context, reason over complex information and continuously improve their capabilities.</p>
           </div>
 
-          <div className="relative mx-auto h-[350px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)]">
-            <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[28px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)]"><div className="absolute inset-2 rounded-[23px] border border-cyan-300/25" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-20 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)]" /></div>
+          <div className="service-domain-diagram relative mx-auto h-[300px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)] sm:h-[350px]">
+            <div className="service-domain-logo absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[20px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)] sm:h-36 sm:w-36 sm:rounded-[28px]"><div className="absolute inset-1.5 rounded-[16px] border border-cyan-300/25 sm:inset-2 sm:rounded-[23px]" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-10 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)] sm:h-20" /></div>
             {["PERCEPTION", "REASONING", "LEARNING", "KNOWLEDGE", "DISCOVERY"].map((label, index) => {
               const positions = ["left-1/2 top-4 -translate-x-1/2 border-cyan-300/40", "left-4 top-1/2 -translate-y-1/2 border-violet-300/40", "right-4 top-1/2 -translate-y-1/2 border-cyan-300/40", "left-8 bottom-5 border-emerald-300/40", "right-8 bottom-5 border-pink-300/40"];
-              return <div key={label} className={`absolute ${positions[index]} z-10 w-[150px] rounded-2xl border bg-slate-950/80 px-3 py-2.5 backdrop-blur-xl`}><div className="font-mono text-[9px] tracking-[0.18em] text-white/85">{label}</div></div>;
+              return <div key={label} className={`service-domain-node service-domain-node-${index} absolute ${positions[index]} z-10 w-[112px] rounded-xl border bg-slate-950/80 px-2 py-2 backdrop-blur-xl sm:w-[150px] sm:rounded-2xl sm:px-3 sm:py-2.5`}><div className="font-mono text-[9px] tracking-[0.12em] sm:tracking-[0.18em] text-white/85">{label}</div></div>;
             })}
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 600 350" aria-hidden="true"><g fill="none" stroke="rgba(34,211,238,0.65)" strokeWidth="1.5" strokeDasharray="5 7"><path d="M300 125 L300 65" /><path d="M230 175 L155 175" /><path d="M370 175 L445 175" /><path d="M255 235 L180 295" /><path d="M345 235 L420 295" /></g></svg>
           </div>
@@ -373,7 +373,7 @@ function AIMachineLearningPanel() {
 
       <section>
         <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">Our Advanced Machine Intelligence Products</div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {AI_PRODUCTS.map((item, index) => (
             <button key={item.name} type="button" onClick={() => setSelectedProduct(index)} className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition ${selectedProduct === index ? `${PRODUCT_ACCENTS[item.accent].border} ${PRODUCT_ACCENTS[item.accent].soft} ${PRODUCT_ACCENTS[item.accent].glow}` : "border-white/10 bg-white/5 hover:border-white/30"}`}>
               <div className={`absolute inset-x-0 top-0 h-1 ${PRODUCT_ACCENTS[item.accent].soft}`} />
@@ -385,8 +385,8 @@ function AIMachineLearningPanel() {
         </div>
       </section>
 
-      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-6 md:p-7`}>
-        <div className="flex flex-wrap items-start justify-between gap-4"><div><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-3xl font-semibold text-white">{product.name}</h4><p className={`mt-2 max-w-2xl text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
+      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-4 sm:p-6 md:p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="min-w-0"><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{product.name}</h4><p className={`mt-2 max-w-2xl text-base sm:text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/65">{product.body}</p>
       </section>
 
@@ -402,7 +402,7 @@ function AutomotivePanel() {
 
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-6 md:p-8">
+      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-4 sm:p-6 md:p-8">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative grid gap-8 xl:grid-cols-[1fr_1.05fr] xl:items-center">
           <div>
@@ -412,11 +412,11 @@ function AutomotivePanel() {
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">Our work focuses on the transition from vehicles that execute predefined functions to vehicles that can understand their environment, reason about changing conditions and intelligently adapt their behaviour.</p>
           </div>
 
-          <div className="relative mx-auto h-[350px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)]">
-            <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[28px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)]"><div className="absolute inset-2 rounded-[23px] border border-cyan-300/25" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-20 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)]" /></div>
+          <div className="service-domain-diagram relative mx-auto h-[300px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)] sm:h-[350px]">
+            <div className="service-domain-logo absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[20px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)] sm:h-36 sm:w-36 sm:rounded-[28px]"><div className="absolute inset-1.5 rounded-[16px] border border-cyan-300/25 sm:inset-2 sm:rounded-[23px]" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-10 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)] sm:h-20" /></div>
             {["PERCEPTION", "PREDICTION", "MOBILITY", "SIMULATION", "ENERGY"].map((label, index) => {
               const positions = ["left-1/2 top-4 -translate-x-1/2 border-cyan-300/40", "left-4 top-1/2 -translate-y-1/2 border-violet-300/40", "right-4 top-1/2 -translate-y-1/2 border-cyan-300/40", "left-8 bottom-5 border-emerald-300/40", "right-8 bottom-5 border-pink-300/40"];
-              return <div key={label} className={`absolute ${positions[index]} z-10 w-[150px] rounded-2xl border bg-slate-950/80 px-3 py-2.5 backdrop-blur-xl`}><div className="font-mono text-[9px] tracking-[0.18em] text-white/85">{label}</div></div>;
+              return <div key={label} className={`service-domain-node service-domain-node-${index} absolute ${positions[index]} z-10 w-[112px] rounded-xl border bg-slate-950/80 px-2 py-2 backdrop-blur-xl sm:w-[150px] sm:rounded-2xl sm:px-3 sm:py-2.5`}><div className="font-mono text-[9px] tracking-[0.12em] sm:tracking-[0.18em] text-white/85">{label}</div></div>;
             })}
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 600 350" aria-hidden="true"><g fill="none" stroke="rgba(34,211,238,0.65)" strokeWidth="1.5" strokeDasharray="5 7"><path d="M300 125 L300 65" /><path d="M230 175 L155 175" /><path d="M370 175 L445 175" /><path d="M255 235 L180 295" /><path d="M345 235 L420 295" /></g></svg>
           </div>
@@ -425,7 +425,7 @@ function AutomotivePanel() {
 
       <section>
         <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.35em] text-cyan-300/80">Our Automotive Intelligence Products</div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {AUTOMOTIVE_PRODUCTS.map((item, index) => (
             <button key={item.name} type="button" onClick={() => setSelectedProduct(index)} className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition ${selectedProduct === index ? `${PRODUCT_ACCENTS[item.accent].border} ${PRODUCT_ACCENTS[item.accent].soft} ${PRODUCT_ACCENTS[item.accent].glow}` : "border-white/10 bg-white/5 hover:border-white/30"}`}>
               <div className={`absolute inset-x-0 top-0 h-1 ${PRODUCT_ACCENTS[item.accent].soft}`} />
@@ -437,8 +437,8 @@ function AutomotivePanel() {
         </div>
       </section>
 
-      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-6 md:p-7`}>
-        <div className="flex flex-wrap items-start justify-between gap-4"><div><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-3xl font-semibold text-white">{product.name}</h4><p className={`mt-2 max-w-2xl text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
+      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-4 sm:p-6 md:p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="min-w-0"><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{product.name}</h4><p className={`mt-2 max-w-2xl text-base sm:text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/65">{product.body}</p>
       </section>
     </div>
@@ -474,7 +474,7 @@ function DomainProductPanel({
 
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-6 md:p-8">
+      <section className="relative overflow-hidden rounded-[28px] border border-cyan-300/20 bg-[linear-gradient(135deg,rgba(7,18,34,0.98),rgba(10,14,31,0.86))] p-4 sm:p-6 md:p-8">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="relative grid gap-8 xl:grid-cols-[1fr_1.05fr] xl:items-center">
           <div>
@@ -484,11 +484,11 @@ function DomainProductPanel({
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/55">{secondBody}</p>
           </div>
 
-          <div className="relative mx-auto h-[350px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)]">
-            <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[28px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)]"><div className="absolute inset-2 rounded-[23px] border border-cyan-300/25" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-20 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)]" /></div>
+          <div className="service-domain-diagram relative mx-auto h-[300px] w-full max-w-[560px] overflow-hidden rounded-[24px] border border-cyan-300/20 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.13),rgba(3,10,24,0.95)_62%)] sm:h-[350px]">
+            <div className="service-domain-logo absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[20px] border border-cyan-300/60 bg-slate-950/85 shadow-[0_0_60px_rgba(34,211,238,0.25)] sm:h-36 sm:w-36 sm:rounded-[28px]"><div className="absolute inset-1.5 rounded-[16px] border border-cyan-300/25 sm:inset-2 sm:rounded-[23px]" /><img src={tmsLogo} alt="TMS logo" className="relative z-10 h-10 w-auto drop-shadow-[0_0_18px_rgba(96,165,250,0.8)] sm:h-20" /></div>
             {["PERCEPTION", "REASONING", "LEARNING", "KNOWLEDGE", "DISCOVERY"].map((label, index) => {
               const positions = ["left-1/2 top-4 -translate-x-1/2 border-cyan-300/40", "left-4 top-1/2 -translate-y-1/2 border-violet-300/40", "right-4 top-1/2 -translate-y-1/2 border-cyan-300/40", "left-8 bottom-5 border-emerald-300/40", "right-8 bottom-5 border-pink-300/40"];
-              return <div key={label} className={`absolute ${positions[index]} z-10 w-[150px] rounded-2xl border bg-slate-950/80 px-3 py-2.5 backdrop-blur-xl`}><div className="font-mono text-[9px] tracking-[0.18em] text-white/85">{label}</div></div>;
+              return <div key={label} className={`service-domain-node service-domain-node-${index} absolute ${positions[index]} z-10 w-[112px] rounded-xl border bg-slate-950/80 px-2 py-2 backdrop-blur-xl sm:w-[150px] sm:rounded-2xl sm:px-3 sm:py-2.5`}><div className="font-mono text-[9px] tracking-[0.12em] sm:tracking-[0.18em] text-white/85">{label}</div></div>;
             })}
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 600 350" aria-hidden="true"><g fill="none" stroke="rgba(34,211,238,0.65)" strokeWidth="1.5" strokeDasharray="5 7"><path d="M300 125 L300 65" /><path d="M230 175 L155 175" /><path d="M370 175 L445 175" /><path d="M255 235 L180 295" /><path d="M345 235 L420 295" /></g></svg>
           </div>
@@ -509,8 +509,8 @@ function DomainProductPanel({
         </div>
       </section>
 
-      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-6 md:p-7`}>
-        <div className="flex flex-wrap items-start justify-between gap-4"><div><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-3xl font-semibold text-white">{product.name}</h4><p className={`mt-2 max-w-2xl text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
+      <section className={`rounded-[28px] border ${accent.border} ${accent.soft} ${accent.glow} p-4 sm:p-6 md:p-7`}>
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="min-w-0"><div className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent.text}`}>Product intelligence brief</div><h4 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">{product.name}</h4><p className={`mt-2 max-w-2xl text-base sm:text-lg ${accent.text}`}>{product.title}</p></div><span className={`rounded-full border ${accent.border} px-3 py-1 font-mono text-[9px] tracking-[0.2em] ${accent.text}`}>{product.status}</span></div>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/65">{product.body}</p>
       </section>
     </div>
@@ -640,7 +640,7 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
           }}
         >
           <motion.div
-            className="fixed top-0 left-0 z-[9999] flex min-h-[0] w-full h-screen sm:top-1/2 sm:left-1/2 sm:w-[95vw] sm:max-w-[1100px] sm:h-[min(85vh,900px)] sm:-translate-x-1/2 sm:-translate-y-1/2 flex-col overflow-hidden rounded-none sm:rounded-[30px] border border-white/10 bg-[rgba(8,12,24,0.88)] shadow-[0_40px_120px_rgba(56,189,248,0.28)] backdrop-blur-[18px]"
+            className="fixed top-0 left-0 z-[9999] flex min-h-[0] w-full h-[100dvh] sm:top-1/2 sm:left-1/2 sm:w-[95vw] sm:max-w-[1100px] sm:h-[min(85vh,900px)] sm:-translate-x-1/2 sm:-translate-y-1/2 flex-col overflow-hidden rounded-none sm:rounded-[30px] border border-white/10 bg-[rgba(8,12,24,0.88)] shadow-[0_40px_120px_rgba(56,189,248,0.28)] backdrop-blur-[18px]"
             variants={PANEL_VARIANTS}
           >
             <div className="absolute inset-0 pointer-events-none">
@@ -653,17 +653,17 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
               />
             </div>
 
-            <div className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-white/10 bg-[rgba(7,11,22,0.92)]/95 px-6 py-5 backdrop-blur-xl">
-              <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">{service.title}</span>
-                <h2 className="font-display text-[clamp(28px,2.8vw,38px)] font-semibold tracking-tight text-white">
+            <div className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-white/10 bg-[rgba(7,11,22,0.92)]/95 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] backdrop-blur-xl sm:gap-4 sm:px-6 sm:py-5">
+              <div className="min-w-0 flex-1">
+                <span className="block break-words font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 sm:text-[10px] sm:tracking-[0.3em]">{service.title}</span>
+                <h2 className="break-words font-display text-[clamp(22px,6vw,38px)] font-semibold leading-tight tracking-tight text-white">
                   {service.title === "Software Engineering" ? "Software Intelligence Engineering" : service.title === "AI & Machine Learning" ? "Advanced Machine Intelligence" : service.title === "Automotive Engineering" ? "Automotive Intelligence & Mobility Systems" : service.title === "Quantum Research" ? "Quantum Intelligence & Computational Systems" : service.title === "Cloud Computing" ? "Computational Intelligence Infrastructure" : service.title === "Cyber Security" ? "Adaptive Cyber Intelligence" : service.title === "Global Health & Medical Sciences" ? "Medical Intelligence & Discovery Systems" : service.title === "UI / UX" ? "Human-Centred Intelligence Systems" : service.title === "Embedded Systems" ? "Embedded Systems Intelligence" : service.title === "IoT" ? "Intelligent Connected Systems" : service.title === "Robotics" ? "Autonomous Machine Intelligence" : service.title === "Supply Chain & Logistics" ? "Supply Chain Intelligence" : service.title === "Hotels & Resorts Intelligence" ? "Hotels & Resorts Intelligence" : service.title === "Telecommunication" ? "Telecommunication" : content?.title}
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/30 bg-white/10 text-white shadow-[0_0_24px_rgba(56,189,248,0.15)] transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(56,189,248,0.35)]"
+                className="group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cyan-300/30 bg-white/10 text-white shadow-[0_0_24px_rgba(56,189,248,0.15)] transition-transform duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(56,189,248,0.35)] sm:h-12 sm:w-12"
               >
                 <motion.span
                   className="absolute inset-0 rounded-full bg-cyan-300/10"
@@ -671,7 +671,7 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
                   transition={{ duration: 0.28, ease: "easeOut" }}
                 />
                 <motion.span
-                  className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/40 bg-black/20"
+                  className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-cyan-300/40 bg-black/20 sm:h-10 sm:w-10"
                   whileHover={{ rotate: 90, scale: 1.05 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
@@ -680,7 +680,7 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
               </button>
             </div>
 
-            <div className={`modal-body flex-1 min-h-0 max-h-full ${brochureOpen ? "overflow-hidden" : "overflow-y-auto"} overscroll-contain touch-pan-y px-6 py-8 md:px-8 lg:px-10 scrollbar-thin scrollbar-thumb-cyan-400/30 scrollbar-track-transparent`}>
+            <div className={`modal-body flex-1 min-h-0 max-h-full ${brochureOpen ? "overflow-hidden" : "overflow-y-auto"} overscroll-contain touch-pan-y px-4 py-5 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:px-6 sm:py-8 md:px-8 lg:px-10 scrollbar-thin scrollbar-thumb-cyan-400/30 scrollbar-track-transparent`}>
               {service.title === "Software Engineering" ? (
                 <SoftwareEngineeringPanel />
               ) : service.title === "AI & Machine Learning" ? (

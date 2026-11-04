@@ -59,7 +59,7 @@ function CourseCard({ c, onOpen, index }: { c: Course; onOpen: (trigger: HTMLEle
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -8, boxShadow: "0 28px 80px rgba(56, 189, 248, 0.16)" }}
+      whileHover={{ y: -8, boxShadow: "0 24px 60px var(--coral-glow)" }}
       className="glass glass-card hover-card rounded-2xl overflow-hidden group flex flex-col"
     >
       <div className="relative h-44 overflow-hidden">
@@ -73,7 +73,7 @@ function CourseCard({ c, onOpen, index }: { c: Course; onOpen: (trigger: HTMLEle
         <p className="text-[13px] leading-relaxed mb-3" style={{ color: "var(--color-text-muted)" }}>{c.desc}</p>
         <div className="flex flex-wrap gap-1.5 mb-4">
           {c.tags.map((t) => (
-            <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100/80 text-slate-700">{t}</span>
+            <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-[var(--text-secondary)]">{t}</span>
           ))}
         </div>
         <div className="flex items-center gap-4 text-[12px] text-slate-600 mb-4 mt-auto">
@@ -291,7 +291,7 @@ export default function CourseCatalog({ onBrochureOpenChange }: CourseCatalogPro
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search Courses..."
-                className="w-full rounded-full border border-slate-200/80 bg-white/90 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition-colors focus:border-[var(--color-electric)] focus:ring-2 focus:ring-[rgba(37,99,235,0.12)]"
+                className="w-full rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] py-3 pl-12 pr-4 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] outline-none transition-colors focus:border-[var(--color-electric)] focus:ring-2 focus:ring-[rgba(37,99,235,0.12)]"
               />
             </motion.div>
 

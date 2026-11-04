@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi2";
 import logoUrl from "../assets/tms-logo.png";
+import { useTheme } from "../lib/theme";
 
 const LINKS = [
   { label: "Services", href: "#services" },
@@ -13,6 +15,7 @@ const LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,7 +53,18 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2"></div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-primary)] transition-colors hover:border-[var(--tms-coral)] hover:text-[var(--tms-coral)]"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            aria-pressed={theme === "light"}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? <HiOutlineSun className="h-5 w-5" /> : <HiOutlineMoon className="h-5 w-5" />}
+          </button>
+        </div>
 
         <button className="md:hidden p-3 text-white" onClick={() => setOpen((o) => !o)} aria-label="Menu">
           <div className="w-6 h-px bg-white mb-2" />

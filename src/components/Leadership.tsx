@@ -84,9 +84,9 @@ function LeadershipCard({ person, index }: { person: Person; index: number }) {
       className="group relative overflow-hidden rounded-[24px] border border-[var(--hairline-15)] glass p-7 md:p-8 min-h-[280px]"
     >
       <div className="absolute inset-0 opacity-70"
-        style={{ background: "linear-gradient(135deg, rgba(56,189,248,0.08), transparent 45%, rgba(59,130,246,0.12))" }} />
-      <div className="absolute left-6 top-6 h-16 w-16 rounded-full border border-cyan-400/20 blur-2xl" style={{ background: "rgba(56,189,248,0.12)" }} />
-      <div className="absolute bottom-4 right-4 h-24 w-24 rounded-full border border-cyan-300/10 blur-3xl" style={{ background: "rgba(34,211,238,0.08)" }} />
+        style={{ background: "linear-gradient(135deg, rgba(255,85,89,0.06), transparent 45%, rgba(41,45,80,0.14))" }} />
+      <div className="absolute left-6 top-6 h-16 w-16 rounded-full border border-cyan-400/20 blur-2xl" style={{ background: "rgba(255,85,89,0.08)" }} />
+      <div className="absolute bottom-4 right-4 h-24 w-24 rounded-full border border-cyan-300/10 blur-3xl" style={{ background: "rgba(41,45,80,0.12)" }} />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
       <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{ background: "linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.06) 35%, transparent 70%)", transform: "translateX(-120%) skewX(-18deg)" }} />
@@ -102,7 +102,7 @@ function LeadershipCard({ person, index }: { person: Person; index: number }) {
             <div className="absolute inset-[3px] rounded-full border border-white/10" />
             <span className="relative z-10 text-sm font-semibold tracking-[0.2em] text-white">{person.initials}</span>
           </div>
-          <div className="rounded-full border border-cyan-400/20 px-3 py-1 text-[10px] font-mono uppercase tracking-[0.28em]" style={{ color: "var(--color-electric)", background: "rgba(56,189,248,0.1)" }}>
+          <div className="rounded-full border border-cyan-400/20 px-3 py-1 text-[10px] font-mono uppercase tracking-[0.28em]" style={{ color: "var(--color-electric)", background: "rgba(255,85,89,0.08)" }}>
             {person.badge}
           </div>
         </div>
@@ -116,7 +116,7 @@ function LeadershipCard({ person, index }: { person: Person; index: number }) {
       </motion.div>
 
       <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-400/10 transition-all duration-500 group-hover:border-cyan-300/30" />
-      <div className={`pointer-events-none absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 ${rotation.active ? "opacity-100" : "opacity-0"}`} style={{ boxShadow: "inset 0 0 28px rgba(56,189,248,0.12)" }} />
+      <div className={`pointer-events-none absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 ${rotation.active ? "opacity-100" : "opacity-0"}`} style={{ boxShadow: "inset 0 0 28px rgba(255,85,89,0.10)" }} />
     </motion.article>
   );
 }

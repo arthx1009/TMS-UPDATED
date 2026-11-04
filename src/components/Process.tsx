@@ -32,7 +32,7 @@ export default function Process() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              whileHover={{ y: -4, boxShadow: "0 24px 60px rgba(56, 189, 248, 0.12)" }}
+              whileHover={{ y: -4, boxShadow: "0 20px 48px var(--coral-glow)" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="relative group hover-card"
             >

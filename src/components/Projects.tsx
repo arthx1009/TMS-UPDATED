@@ -42,7 +42,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            whileHover={{ y: -6, boxShadow: "0 28px 80px rgba(56, 189, 248, 0.16)" }}
+            whileHover={{ y: -6, boxShadow: "0 24px 60px var(--coral-glow)" }}
             transition={{ duration: 0.4 }}
             className="relative rounded-2xl overflow-hidden h-64 group cursor-pointer hover-card"
           >

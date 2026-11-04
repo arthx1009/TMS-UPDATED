@@ -25,7 +25,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, rotateY: 25, scale: 0.95 }}
             animate={{ opacity: 1, rotateY: 0, scale: 1 }}
             exit={{ opacity: 0, rotateY: -25, scale: 0.95 }}
-            whileHover={{ y: -3, boxShadow: "0 28px 80px rgba(56, 189, 248, 0.16)" }}
+            whileHover={{ y: -3, boxShadow: "0 24px 60px var(--coral-glow)" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="glass rounded-3xl p-10 text-center hover-card"
             style={{ perspective: 1000 }}

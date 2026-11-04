@@ -85,7 +85,7 @@ export function GlassCard({
         hoverLift
           ? {
               y: -6,
-              boxShadow: "0 28px 80px rgba(56, 189, 248, 0.16)",
+              boxShadow: "0 24px 60px var(--coral-glow)",
               borderColor: "rgba(var(--color-electric-rgb), 0.28)",
             }
           : undefined
@@ -129,13 +129,13 @@ export function MagneticButton({
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
       className={cn(
         "relative px-7 py-3.5 rounded-full font-medium text-sm tracking-wide overflow-hidden group",
-        variant === "primary" ? "text-ink" : "text-white border",
+        variant === "primary" ? "primary-action text-white" : "text-white border",
         className
       )}
       style={
         variant === "primary"
-          ? { background: "linear-gradient(135deg, var(--color-brand), var(--color-electric))", color: "var(--color-ink)" }
-          : { borderColor: "var(--hairline-15)", background: "rgba(10, 19, 34, 0.7)" }
+          ? { background: "var(--tms-coral)", color: "#FFFFFF" }
+          : { borderColor: "var(--border-subtle)", background: "var(--bg-card)" }
       }
     >
       <span className="relative z-10">{children}</span>

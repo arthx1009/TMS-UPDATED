@@ -73,9 +73,9 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t px-6 md:px-12 lg:px-20 py-20 max-w-[1440px] mx-auto" style={{ borderColor: "var(--hairline-06)" }}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[-12%] top-0 h-64 w-64 rounded-full blur-3xl opacity-20" style={{ background: "rgba(56, 189, 248, 0.16)" }} />
-        <div className="absolute right-[-10%] bottom-0 h-56 w-56 rounded-full blur-3xl opacity-15" style={{ background: "rgba(59, 130, 246, 0.14)" }} />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.05),transparent_25%)]" />
+        <div className="absolute left-[-12%] top-0 h-64 w-64 rounded-full blur-3xl opacity-15" style={{ background: "rgba(255, 85, 89, 0.10)" }} />
+        <div className="absolute right-[-10%] bottom-0 h-56 w-56 rounded-full blur-3xl opacity-15" style={{ background: "rgba(41, 45, 80, 0.14)" }} />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,85,89,0.05),transparent_25%)]" />
         <div className="footer-footer-particle footer-particle-1" />
         <div className="footer-footer-particle footer-particle-2" />
         <div className="footer-footer-particle footer-particle-3" />
@@ -89,9 +89,9 @@ export function Footer() {
         className="relative mb-10 overflow-hidden rounded-[24px] border border-[var(--hairline-15)] glass px-6 py-8 md:px-8 lg:px-10"
         animate={{ y: [0, -2, 0] }}
       >
-        <div className="absolute inset-0 opacity-70" style={{ background: "linear-gradient(135deg, rgba(56,189,248,0.09), transparent 45%, rgba(59,130,246,0.12))" }} />
+        <div className="absolute inset-0 opacity-70" style={{ background: "linear-gradient(135deg, rgba(255,85,89,0.07), transparent 45%, rgba(41,45,80,0.14))" }} />
         <div className="absolute inset-x-8 top-6 h-0.5 rounded-full bg-white/10 blur-sm" />
-        <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_45%)] opacity-60" />
+        <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_center,rgba(255,85,89,0.06),transparent_45%)] opacity-60" />
         <div className="absolute left-6 top-8 h-2 w-2 rounded-full bg-cyan-300/40 blur-2xl animate-footer-particle" />
         <div className="absolute right-10 bottom-10 h-2 w-2 rounded-full bg-cyan-400/30 blur-2xl animate-footer-particle delay-200" />
         <div className="absolute left-1/2 top-16 h-2 w-2 rounded-full bg-cyan-500/20 blur-2xl animate-footer-particle delay-400" />
@@ -126,13 +126,13 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="mb-4 flex items-center gap-3"
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              className="relative flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 shadow-[0_0_32px_rgba(56,189,248,0.16)]"
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                    className="relative flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/20 bg-white/5 shadow-[0_0_32px_rgba(255,85,89,0.12)]"
             >
               <div className="absolute inset-0 rounded-full border border-cyan-400/30 opacity-50" />
-              <div className="absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.18),transparent)]" />
+              <div className="absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(255,85,89,0.12),transparent)]" />
               <img src={logoUrl} alt="TMS" className="relative h-7 w-auto" />
             </motion.div>
             <span className="font-display text-sm font-semibold text-white">TarvyX Mind Systems</span>
@@ -159,11 +159,11 @@ export function Footer() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.5, delay: 0.05 * index }}
-                  whileHover={{ y: -8, scale: 1.1, rotate: 8, boxShadow: "0 18px 40px rgba(56, 189, 248, 0.22)" }}
+                  whileHover={{ y: -4, scale: 1.04, boxShadow: "0 12px 28px var(--coral-glow)" }}
                   className="group relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--hairline-15)] bg-white/[0.04] text-white/75 transition-all duration-300"
                 >
-                  <span className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(circle, rgba(56,189,248,0.18), transparent 70%)" }} />
-                  <span className="absolute inset-0 rounded-full opacity-0 scale-90 transition duration-500 group-hover:opacity-100 group-hover:scale-105" style={{ boxShadow: "0 0 0 8px rgba(56,189,248,0.05)" }} />
+                  <span className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(circle, rgba(255,85,89,0.12), transparent 70%)" }} />
+                  <span className="absolute inset-0 rounded-full opacity-0 scale-90 transition duration-500 group-hover:opacity-100 group-hover:scale-105" style={{ boxShadow: "0 0 0 8px rgba(255,85,89,0.05)" }} />
                   <Icon className="relative h-5 w-5" />
                 </motion.a>
               );
@@ -185,7 +185,7 @@ export function Footer() {
                   <motion.a
                     key={it}
                     href="#"
-                    whileHover={{ x: 4, color: "#ffffff" }}
+                    whileHover={{ x: 4, color: "#FF5559" }}
                     transition={{ duration: 0.2 }}
                     className="group relative inline-flex w-fit items-center gap-2 text-white/65 transition-colors hover:text-white"
                   >
@@ -201,12 +201,12 @@ export function Footer() {
       </div>
 
       <div className="relative mt-10">
-        <div className="relative h-px overflow-hidden rounded-full border-0" style={{ background: "rgba(56, 189, 248, 0.16)" }}>
+        <div className="relative h-px overflow-hidden rounded-full border-0" style={{ background: "rgba(168, 174, 200, 0.16)" }}>
           <motion.div
             animate={{ x: [-120, 320] }}
             transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
             className="absolute inset-y-0 w-24 rounded-full blur-sm"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent)" }}
+            style={{ background: "linear-gradient(90deg, transparent, rgba(255, 85, 89, 0.72), transparent)" }}
           />
         </div>
       </div>

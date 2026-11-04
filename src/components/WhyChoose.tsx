@@ -19,7 +19,7 @@ export default function WhyChoose() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ delay: i * 0.05, duration: 0.5 }}
-            whileHover={{ y: -4, boxShadow: "0 24px 60px rgba(56, 189, 248, 0.12)" }}
+            whileHover={{ y: -4, boxShadow: "0 20px 48px var(--coral-glow)" }}
             className="glass glass-card hover-card rounded-2xl p-5 text-center group"
           >
             <div className="w-9 h-9 mx-auto rounded-full flex items-center justify-center mb-3 font-mono text-[11px]" style={{ background: "rgba(var(--color-electric-rgb), 0.1)", color: "var(--color-electric)" }}>

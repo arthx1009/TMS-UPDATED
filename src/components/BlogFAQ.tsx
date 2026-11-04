@@ -30,7 +30,7 @@ export function Blog() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            whileHover={{ y: -6, boxShadow: "0 28px 80px rgba(56, 189, 248, 0.16)" }}
+            whileHover={{ y: -6, boxShadow: "0 24px 60px var(--coral-glow)" }}
             className="glass glass-card hover-card rounded-2xl overflow-hidden group block"
           >
             <div className="h-40 overflow-hidden">

@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Section, SectionTitle } from "./UI";
+import { Section } from "./UI";
 
 type Person = {
   name: string;
@@ -8,7 +7,7 @@ type Person = {
   bio: string;
   badge: string;
   initials: string;
-  accent: string;
+  avatar?: "female" | "male";
 };
 
 const EXECUTIVES: Person[] = [
@@ -18,7 +17,7 @@ const EXECUTIVES: Person[] = [
     bio: "Shaping vision, driving strategic growth, and building long-term value through innovation, trusted partnerships, and a commitment to excellence.",
     badge: "Strategic Vision",
     initials: "ST",
-    accent: "from-cyan-400 via-sky-500 to-blue-600",
+    avatar: "female",
   },
   {
     name: "S Manoj Kumar",
@@ -26,7 +25,7 @@ const EXECUTIVES: Person[] = [
     bio: "Leading with purpose, fostering innovation, and delivering reliable technology solutions through excellence in execution and continuous improvement.",
     badge: "Executive Lead",
     initials: "MK",
-    accent: "from-sky-400 via-cyan-500 to-indigo-600",
+    avatar: "male",
   },
 ];
 
@@ -37,7 +36,6 @@ const ADVISORS: Person[] = [
     bio: "Brings deep expertise in transformation, technology leadership, and enterprise modernization.",
     badge: "Advisory",
     initials: "AJ",
-    accent: "from-sky-500 via-cyan-500 to-blue-600",
   },
   {
     name: "Meenakshi R",
@@ -45,7 +43,6 @@ const ADVISORS: Person[] = [
     bio: "Shapes market strategy, partnerships, and scalable expansion with an emphasis on long-term value.",
     badge: "Growth",
     initials: "MR",
-    accent: "from-cyan-400 via-sky-500 to-indigo-600",
   },
   {
     name: "Saharika Teppa",
@@ -53,109 +50,121 @@ const ADVISORS: Person[] = [
     bio: "Guides product innovation, research direction, and next-generation digital experiences.",
     badge: "Innovation",
     initials: "ST",
-    accent: "from-sky-400 via-blue-500 to-cyan-600",
   },
 ];
 
+function ProfileAvatar({ person }: { person: Person }) {
+  if (!person.avatar) {
+    return <span className="leadership-card__initials">{person.initials}</span>;
+  }
+
+  return (
+    <img
+      className={`leadership-card__portrait leadership-card__portrait--${person.avatar}`}
+      src="/assets/leadership/Executive%20Profile%20Avatars.png"
+      alt={`${person.avatar} executive profile`}
+    />
+  );
+}
+
 function LeadershipCard({ person, index }: { person: Person; index: number }) {
-  const [rotation, setRotation] = useState({ x: 0, y: 0, active: false });
-
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
-    setRotation({ x: -y, y: x, active: true });
-  };
-
-  const onLeave = () => setRotation({ x: 0, y: 0, active: false });
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-70px" }}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-        transformStyle: "preserve-3d",
-      }}
-      className="group relative overflow-hidden rounded-[24px] border border-[var(--hairline-15)] glass p-7 md:p-8 min-h-[280px]"
+      className="leadership-card group"
     >
-      <div className="absolute inset-0 opacity-70"
-        style={{ background: "linear-gradient(135deg, rgba(255,85,89,0.06), transparent 45%, rgba(41,45,80,0.14))" }} />
-      <div className="absolute left-6 top-6 h-16 w-16 rounded-full border border-cyan-400/20 blur-2xl" style={{ background: "rgba(255,85,89,0.08)" }} />
-      <div className="absolute bottom-4 right-4 h-24 w-24 rounded-full border border-cyan-300/10 blur-3xl" style={{ background: "rgba(41,45,80,0.12)" }} />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
-      <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{ background: "linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.06) 35%, transparent 70%)", transform: "translateX(-120%) skewX(-18deg)" }} />
-
-      <motion.div
-        animate={{ y: [0, -6, 0], rotate: [0, 1, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="relative z-10 flex flex-col items-start"
-      >
-        <div className="mb-5 flex items-center gap-3">
-          <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-cyan-300/30 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-[0_0_30px_rgba(56,189,248,0.18)]">
-            <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${person.accent} opacity-80 blur-[2px]`} />
-            <div className="absolute inset-[3px] rounded-full border border-white/10" />
-            <span className="relative z-10 text-sm font-semibold tracking-[0.2em] text-white">{person.initials}</span>
+      <div className="leadership-card__content">
+        <div className="leadership-card__profile">
+          <div className={`leadership-card__avatar${person.avatar ? " leadership-card__avatar--executive" : ""}`}>
+            <ProfileAvatar person={person} />
           </div>
-          <div className="rounded-full border border-cyan-400/20 px-3 py-1 text-[10px] font-mono uppercase tracking-[0.28em]" style={{ color: "var(--color-electric)", background: "rgba(255,85,89,0.08)" }}>
+          <span className="leadership-card__profile-divider" />
+          <div className="leadership-card__badge">
             {person.badge}
           </div>
         </div>
 
-        <h3 className="font-display text-[20px] font-semibold text-white transition-all duration-300 group-hover:text-cyan-200">{person.name}</h3>
-        <div className="mt-2 flex items-center gap-2">
-          <span className="text-[13px] font-medium" style={{ color: "var(--color-electric)" }}>{person.title}</span>
-          <span className="h-px w-8 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" style={{ background: "linear-gradient(90deg, var(--color-electric), transparent)" }} />
-        </div>
-        <p className="mt-4 max-w-[32rem] text-sm leading-7" style={{ color: "var(--color-text-muted)" }}>{person.bio}</p>
-      </motion.div>
-
-      <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-cyan-400/10 transition-all duration-500 group-hover:border-cyan-300/30" />
-      <div className={`pointer-events-none absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 ${rotation.active ? "opacity-100" : "opacity-0"}`} style={{ boxShadow: "inset 0 0 28px rgba(255,85,89,0.10)" }} />
+        <h3 className="leadership-card__name">{person.name}</h3>
+        <p className="leadership-card__title">{person.title}</p>
+        <span className="leadership-card__separator" />
+        <p className="leadership-card__bio">{person.bio}</p>
+      </div>
+      <div className="leadership-card__glow" />
     </motion.article>
+  );
+}
+
+function LeadershipSectionHeading({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="leadership-section-heading">
+      <span className="leadership-section-heading__rule" />
+      <h3 className="leadership-section-heading__title">{title}</h3>
+      <span className="leadership-section-heading__rule" />
+      <p className="leadership-section-heading__description">{description}</p>
+    </div>
   );
 }
 
 export default function Leadership() {
   return (
-    <Section id="leadership" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
-      <SectionTitle
-        eyebrow="Leadership Team"
-        title="Meet the leaders shaping TarvyX Mind Systems."
-        sub="Meet the leaders driving innovation, strategy, and long-term growth at TarvyX Mind Systems."
-        align="center"
-      />
-
-      <div className="mx-auto mb-12 max-w-6xl">
-        <div className="mb-8 text-center">
-          <h3 className="font-display text-[22px] font-semibold text-white">Executive Leadership</h3>
-          <p className="mx-auto mt-2 max-w-2xl text-sm leading-7" style={{ color: "var(--color-text-muted)" }}>
-            Strategic minds guiding delivery, trust, and long-term growth across every engagement.
-          </p>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-2">
-          {EXECUTIVES.map((person, index) => (
-            <LeadershipCard key={person.name} person={person} index={index} />
-          ))}
-        </div>
+    <Section id="leadership" className="leadership-page border-t" style={{ borderColor: "var(--hairline-06)" }}>
+      <div className="leadership-page__waves" aria-hidden="true">
+        <img src="/assets/software-intelligence/Glowing Red Neon Wave Ribbons.png" alt="" className="leadership-page__wave leadership-page__wave--top" />
+        <img src="/assets/software-intelligence/Glowing Red Neon Wave Ribbons.png" alt="" className="leadership-page__wave leadership-page__wave--bottom" />
       </div>
 
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 text-center">
-          <h3 className="font-display text-[22px] font-semibold text-white">Board of Advisors</h3>
-          <p className="mx-auto mt-2 max-w-2xl text-sm leading-7" style={{ color: "var(--color-text-muted)" }}>
-            Experienced advisors supporting innovation, growth, and strategic direction.
-          </p>
+      <div className="leadership-page__content">
+        <div className="leadership-page__intro">
+          <div className="leadership-page__eyebrow">
+            <span />
+            <span>Leadership Team</span>
+            <span />
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="leadership-page__title"
+          >
+            Meet the leaders shaping TarvyX Mind Systems.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="leadership-page__description"
+          >
+            Meet the leaders driving innovation, strategy, and long-term growth at TarvyX Mind Systems.
+          </motion.p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {ADVISORS.map((person, index) => (
-            <LeadershipCard key={person.name} person={person} index={index + 2} />
-          ))}
+
+        <div className="leadership-page__group leadership-page__group--executive">
+          <LeadershipSectionHeading
+            title="Executive Leadership"
+            description="Strategic minds guiding delivery, trust, and long-term growth across every engagement."
+          />
+          <div className="leadership-page__executives">
+            {EXECUTIVES.map((person, index) => (
+              <LeadershipCard key={person.name} person={person} index={index} />
+            ))}
+          </div>
+        </div>
+
+        <div className="leadership-page__group leadership-page__group--advisors">
+          <LeadershipSectionHeading
+            title="Board of Advisors"
+            description="Experienced advisors supporting innovation, growth, and strategic direction."
+          />
+          <div className="leadership-page__advisors">
+            {ADVISORS.map((person, index) => (
+              <LeadershipCard key={person.name} person={person} index={index + 2} />
+            ))}
+          </div>
         </div>
       </div>
     </Section>

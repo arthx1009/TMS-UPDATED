@@ -15,11 +15,12 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import logoUrl from "../assets/tms-logo.png";
+import RedWaves from "./RedWaves";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <Section id="contact" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
+    <Section id="contact" wave="contact" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
       <SectionTitle eyebrow="Contact" title="Tell us what you're building." sub="We reply within one business day. All discussions are covered under NDA on request." />
       <div className="grid lg:grid-cols-5 gap-6">
         <div className="lg:col-span-2 flex flex-col gap-4">
@@ -34,7 +35,7 @@ export function Contact() {
                 <c.icon className="w-4.5 h-4.5" style={{ color: "var(--color-electric)" }} />
               </div>
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-white/40">{c.label}</div>
+                <div className="contact-label font-mono text-[10px] uppercase tracking-widest text-white/40">{c.label}</div>
                 <div className="text-sm font-medium">{c.value}</div>
               </div>
             </motion.div>
@@ -49,11 +50,11 @@ export function Contact() {
           className="lg:col-span-3 glass glass-card hover-card rounded-2xl p-6 flex flex-col gap-4 group"
         >
           <div className="grid sm:grid-cols-2 gap-4">
-            <input required placeholder="Full name" className="bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
-            <input required type="email" placeholder="Work email" className="bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+            <input required placeholder="Full name" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+            <input required type="email" placeholder="Work email" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
           </div>
-          <input placeholder="Company" className="bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
-          <textarea required rows={4} placeholder="What are you building?" className="bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors resize-none" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+          <input placeholder="Company" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+          <textarea required rows={4} placeholder="What are you building?" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors resize-none" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
           <MagneticButton className="self-start !py-3 !px-7">{sent ? "Sent — we'll be in touch" : "Send message"}</MagneticButton>
         </motion.form>
       </div>
@@ -71,7 +72,8 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t px-6 md:px-12 lg:px-20 py-20 max-w-[1440px] mx-auto" style={{ borderColor: "var(--hairline-06)" }}>
+    <footer className="tms-wave-host relative overflow-hidden border-t px-6 md:px-12 lg:px-20 py-20 max-w-[1440px] mx-auto" style={{ borderColor: "var(--hairline-06)" }}>
+      <RedWaves variant="footer" />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-[-12%] top-0 h-64 w-64 rounded-full blur-3xl opacity-15" style={{ background: "rgba(255, 85, 89, 0.10)" }} />
         <div className="absolute right-[-10%] bottom-0 h-56 w-56 rounded-full blur-3xl opacity-15" style={{ background: "rgba(41, 45, 80, 0.14)" }} />
@@ -99,7 +101,7 @@ export function Footer() {
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl relative z-10">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: "var(--color-electric)" }}>Next Step</div>
-            <h3 className="mt-2 font-display text-[clamp(22px,3vw,32px)] font-semibold text-white">Innovate. Build. Grow.</h3>
+            <h3 className="footer-cta-title mt-2 font-display text-[clamp(22px,3vw,32px)] font-semibold text-white">Innovate. Build. Grow.</h3>
             <p className="mt-3 text-sm leading-7" style={{ color: "var(--color-text-muted)" }}>Become part of a culture driven by creativity, engineering excellence, and continuous innovation..</p>
           </div>
           <div className="flex flex-wrap gap-3 relative z-10">
@@ -135,7 +137,7 @@ export function Footer() {
               <div className="absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(255,85,89,0.12),transparent)]" />
               <img src={logoUrl} alt="TMS" className="relative h-7 w-auto" />
             </motion.div>
-            <span className="font-display text-sm font-semibold text-white">TarvyX Mind Systems</span>
+            <span className="footer-brand font-display text-sm font-semibold text-white">TarvyX Mind Systems</span>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -160,7 +162,7 @@ export function Footer() {
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.5, delay: 0.05 * index }}
                   whileHover={{ y: -4, scale: 1.04, boxShadow: "0 12px 28px var(--coral-glow)" }}
-                  className="group relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--hairline-15)] bg-white/[0.04] text-white/75 transition-all duration-300"
+                  className="footer-social group relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--hairline-15)] bg-white/[0.04] text-white/75 transition-all duration-300"
                 >
                   <span className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(circle, rgba(255,85,89,0.12), transparent 70%)" }} />
                   <span className="absolute inset-0 rounded-full opacity-0 scale-90 transition duration-500 group-hover:opacity-100 group-hover:scale-105" style={{ boxShadow: "0 0 0 8px rgba(255,85,89,0.05)" }} />
@@ -179,7 +181,7 @@ export function Footer() {
             { h: "Legal", items: ["Privacy", "Terms", "Cookies", "NDA"] },
           ].map((col) => (
             <div key={col.h}>
-              <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">{col.h}</div>
+              <div className="footer-column-heading mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">{col.h}</div>
               <div className="flex flex-col gap-2">
                 {col.items.map((it) => (
                   <motion.a
@@ -187,7 +189,7 @@ export function Footer() {
                     href="#"
                     whileHover={{ x: 4, color: "#FF5559" }}
                     transition={{ duration: 0.2 }}
-                    className="group relative inline-flex w-fit items-center gap-2 text-white/65 transition-colors hover:text-white"
+                    className="footer-link group relative inline-flex w-fit items-center gap-2 text-white/65 transition-colors hover:text-white"
                   >
                     <span>{it}</span>
                     <span className="block h-px w-0 bg-gradient-to-r from-[var(--color-electric)] to-transparent transition-all duration-300 group-hover:w-4" />
@@ -213,10 +215,10 @@ export function Footer() {
 
       <div className="relative mt-6 flex flex-col gap-4 border-t border-white/5 pt-8 text-[12px] text-white/35 sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: "var(--hairline-06)" }}>
         <div>
-          <div className="text-sm font-semibold text-white">© {new Date().getFullYear()} TarvyX Mind Systems</div>
-          <div className="mt-2 text-[12px] text-white/55">Crafted with Precision • Engineered for the Future</div>
+          <div className="footer-copyright text-sm font-semibold text-white">© {new Date().getFullYear()} TarvyX Mind Systems</div>
+          <div className="footer-tagline mt-2 text-[12px] text-white/55">Crafted with Precision • Engineered for the Future</div>
         </div>
-        <div className="text-[12px] font-mono text-white/45">Bangalore,Karnataka -India • Building the Future</div>
+        <div className="footer-location text-[12px] font-mono text-white/45">Bangalore,Karnataka -India • Building the Future</div>
       </div>
     </footer>
   );

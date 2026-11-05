@@ -61,7 +61,7 @@ export function FAQ() {
             >
               <span className="font-medium text-[14px]">{f.q}</span>
               <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.3 }}>
-                <HiOutlinePlus className="w-4 h-4 text-white/60" />
+                <HiOutlinePlus className="faq-toggle-icon w-4 h-4 text-white/60" />
               </motion.span>
             </button>
             <AnimatePresence>

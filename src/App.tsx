@@ -13,7 +13,6 @@ import TechStack from "./components/TechStack";
 import Research from "./components/Research";
 import Projects from "./components/Projects";
 import WhyChoose from "./components/WhyChoose";
-import Process from "./components/Process";
 import Leadership from "./components/Leadership";
 import Testimonials from "./components/Testimonials";
 import { Blog, FAQ } from "./components/BlogFAQ";
@@ -24,12 +23,19 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.1, easing: (t) => 1 - Math.pow(1 - t, 3) });
+    let rafId = 0;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
+
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
   }, []);
 
   return (
@@ -48,7 +54,6 @@ export default function App() {
         <Research />
         <Projects />
         <WhyChoose />
-        <Process />
         <Leadership />
         <Testimonials />
         <Blog />

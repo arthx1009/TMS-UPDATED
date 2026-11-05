@@ -10,7 +10,7 @@ const PAPERS = [
 
 export default function Research() {
   return (
-    <Section id="research" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
+    <Section id="research" wave="research" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
       <SectionTitle
         eyebrow="Research & Innovation"
         title="R&D that feeds directly into delivery."

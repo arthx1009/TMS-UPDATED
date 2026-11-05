@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section, SectionTitle } from "./UI";
 import ServiceOverlay, { type ServiceCardData } from "./ServiceOverlay";
@@ -35,31 +35,14 @@ const SERVICES: ServiceCardData[] = [
   { icon: HiOutlineSwatch, title: "Camera & Imaging", desc: "Engineering imaging systems that perceive, interpret and understand the world through computational vision and sensor fusion." },
 ];
 
-function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number; onLearnMore: () => void; active: boolean }) {
-  const [style, setStyle] = useState({});
-  const ref = useRef<HTMLDivElement>(null);
-
-  const onMove = (e: MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    setStyle({ transform: `perspective(600px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)` });
-  };
-
-  const onLeave = () => setStyle({ transform: "perspective(600px) rotateX(0) rotateY(0)" });
-
+function ServiceCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number; onLearnMore: () => void; active: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      whileHover={{ y: -6, boxShadow: active ? "0 0 0 32px var(--coral-glow)" : "0 24px 60px var(--coral-glow)" }}
+      whileHover={{ y: -2 }}
       transition={{ duration: 0.5, delay: (i % 6) * 0.05, type: "spring", stiffness: 220, damping: 22 }}
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
       onClick={onLearnMore}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -69,27 +52,18 @@ function TiltCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number
       }}
       tabIndex={0}
       role="button"
-      style={{ transition: "transform 0.25s ease-out", ...style }}
-      className={`glass glass-card hover-card rounded-2xl p-5 sm:p-6 group relative flex h-full flex-col overflow-hidden cursor-pointer ${active ? "border border-cyan-300/20 bg-[rgba(15,23,42,0.95)]" : ""}`}
+      aria-label={`${s.title}. Learn more`}
+      className={`service-card group${active ? " service-card--active" : ""}`}
     >
-      <div className="absolute inset-0 rounded-2xl border border-white/10 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" style={{ background: "var(--color-electric)" }} />
-      <s.icon className="w-6 h-6 mb-3 sm:mb-4" style={{ color: "var(--color-electric)" }} />
-      <h3 className="font-display font-semibold text-[15px] mb-1.5 break-words">{s.title}</h3>
-      <p className="text-[13px] leading-relaxed mb-4" style={{ color: "var(--color-text-muted)" }}>{s.desc}</p>
-      <motion.button
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation();
-          onLearnMore();
-        }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.96 }}
-        transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        className="mt-auto min-h-10 -mx-2 inline-flex items-center gap-1 px-2 text-[12px] font-medium text-white/60 transition-colors hover:text-white"
-      >
-        Learn more <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-      </motion.button>
+      <span className="service-card__icon" aria-hidden="true">
+        <s.icon />
+      </span>
+      <span className="service-card__separator" aria-hidden="true" />
+      <span className="service-card__content">
+        <span className="service-card__title">{s.title}</span>
+        <span className="service-card__description">{s.desc}</span>
+      </span>
+      <span className="service-card__arrow" aria-hidden="true">→</span>
     </motion.div>
   );
 }
@@ -109,15 +83,15 @@ export default function Services() {
   };
 
   return (
-    <Section id="services">
+    <Section id="services" className="services-section">
       <SectionTitle
         eyebrow="Our Core Services"
-        title="Eighteen disciplines. One engineering standard."
+        title="Twenty Two disciplines. One engineering standard."
         sub="From embedded automotive systems to applied AI research — each service is delivered by a dedicated pod, not a generalist bench."
       />
-      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+      <div className="services-grid">
         {SERVICES.map((s, i) => (
-          <TiltCard key={s.title} s={s} i={i} active={overlayOpen && selectedService?.title === s.title} onLearnMore={() => handleOpen(s)} />
+          <ServiceCard key={s.title} s={s} i={i} active={overlayOpen && selectedService?.title === s.title} onLearnMore={() => handleOpen(s)} />
         ))}
       </div>
       <ServiceOverlay service={selectedService} open={overlayOpen} onClose={handleClose} />

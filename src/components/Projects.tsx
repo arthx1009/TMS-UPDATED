@@ -25,7 +25,9 @@ export default function Projects() {
           <button
             key={c}
             onClick={() => setFilter(c)}
-            className={`px-4 py-2 rounded-full text-xs font-medium font-mono tracking-wide transition-colors ${
+            className={`project-filter px-4 py-2 rounded-full text-xs font-medium font-mono tracking-wide transition-colors ${
+              filter === c ? "project-filter--active " : ""
+            }${
               filter === c ? "text-ink" : "text-white/60 border border-white/10 hover:text-white"
             }`}
             style={filter === c ? { background: "var(--color-electric)", color: "var(--color-ink)" } : undefined}
@@ -44,13 +46,13 @@ export default function Projects() {
             viewport={{ once: true, margin: "-40px" }}
             whileHover={{ y: -6, boxShadow: "0 24px 60px var(--coral-glow)" }}
             transition={{ duration: 0.4 }}
-            className="relative rounded-2xl overflow-hidden h-64 group cursor-pointer hover-card"
+            className="project-card relative rounded-2xl overflow-hidden h-64 group cursor-pointer hover-card"
           >
             <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
-              <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: "var(--color-electric)" }}>{p.cat}</span>
-              <h3 className="font-display font-semibold text-[17px] mt-1">{p.title}</h3>
+              <span className="project-card__category font-mono text-[10px] tracking-widest uppercase" style={{ color: "var(--color-electric)" }}>{p.cat}</span>
+              <h3 className="project-card__title font-display font-semibold text-[17px] mt-1">{p.title}</h3>
             </div>
           </motion.div>
         ))}

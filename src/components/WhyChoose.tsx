@@ -1,33 +1,59 @@
 import { motion } from "framer-motion";
-import { Section, SectionTitle } from "./UI";
+import { Section } from "./UI";
 
 const REASONS = [
-  "Research Driven", "Industry Experts", "Latest Technologies",
-  "Premium Support", "Real Projects", "Enterprise Experience",
-  "Secure", "AI Features",
+  "Research Driven",
+  "Industry Experts",
+  "Latest Technologies",
+  "Premium Support",
+  "Real Projects",
+  "Enterprise Experience",
+  "Secure",
+  "AI Features",
 ];
 
 export default function WhyChoose() {
   return (
-    <Section id="why" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
-      <SectionTitle eyebrow="Why Choose TMS" title="Eight reasons enterprise teams pick us back." align="center" />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {REASONS.map((r, i) => (
-          <motion.div
-            key={r}
+    <Section id="why" className="why-choose-section border-t" style={{ borderColor: "rgba(57, 184, 255, 0.12)" }}>
+      <div className="why-choose-section__content">
+        <div className="why-choose-section__heading">
+          <p className="why-choose-section__eyebrow">Why Choose TMS</p>
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: i * 0.05, duration: 0.5 }}
-            whileHover={{ y: -4, boxShadow: "0 20px 48px var(--coral-glow)" }}
-            className="glass glass-card hover-card rounded-2xl p-5 text-center group"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="why-choose-section__title"
           >
-            <div className="w-9 h-9 mx-auto rounded-full flex items-center justify-center mb-3 font-mono text-[11px]" style={{ background: "rgba(var(--color-electric-rgb), 0.1)", color: "var(--color-electric)" }}>
-              {String(i + 1).padStart(2, "0")}
-            </div>
-            <span className="text-sm font-medium">{r}</span>
-          </motion.div>
-        ))}
+            Eight reasons enterprise teams pick us back.
+          </motion.h2>
+          <span className="why-choose-section__underline" aria-hidden="true" />
+        </div>
+
+        <div className="why-choose-section__grid">
+          {REASONS.map((reason, index) => (
+            <motion.div
+              key={reason}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ delay: index * 0.045, duration: 0.45 }}
+              className="why-choose-item"
+            >
+              <img
+                className="why-choose-item__logo"
+                src={`/assets/why-choose/reason-${String(index + 1).padStart(2, "0")}.png`}
+                alt={`${reason} 3D logo`}
+                loading="lazy"
+                decoding="async"
+              />
+              <p className="why-choose-item__label">
+                <span className="why-choose-item__number">{String(index + 1).padStart(2, "0")}</span>
+                <span>{reason}</span>
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </Section>
   );

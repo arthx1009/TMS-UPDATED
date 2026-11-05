@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ReactNode, CSSProperties } from "react";
 import { cn } from "../lib/utils";
+import RedWaves, { type RedWaveVariant } from "./RedWaves";
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
@@ -32,7 +33,7 @@ export function SectionTitle({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1] text-white"
+        className="section-title font-display font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1]"
       >
         {title}
       </motion.h2>
@@ -57,14 +58,25 @@ export function Section({
   children,
   className,
   style,
+  wave,
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
+  wave?: RedWaveVariant;
 }) {
   return (
-    <section id={id} style={style} className={cn("relative px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1440px] mx-auto", className)}>
+    <section
+      id={id}
+      style={style}
+      className={cn(
+        "relative px-6 md:px-12 lg:px-20 py-24 md:py-32 max-w-[1440px] mx-auto overflow-hidden",
+        wave && "tms-wave-host",
+        className
+      )}
+    >
+      {wave && <RedWaves variant={wave} />}
       {children}
     </section>
   );
@@ -135,7 +147,7 @@ export function MagneticButton({
       style={
         variant === "primary"
           ? { background: "var(--tms-coral)", color: "#FFFFFF" }
-          : { borderColor: "var(--border-subtle)", background: "var(--bg-card)" }
+            : { borderColor: "var(--border-subtle)", background: "var(--bg-card)", color: "var(--text-primary)" }
       }
     >
       <span className="relative z-10">{children}</span>

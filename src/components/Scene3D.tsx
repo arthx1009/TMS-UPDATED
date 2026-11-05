@@ -15,17 +15,17 @@ export default function Scene3D() {
   }, []);
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-[28px] border border-white/10 bg-black/20 shadow-[0_0_80px_rgba(56,189,248,0.12)]">
+    <div className="hero-reference__video relative h-full w-full overflow-hidden">
       <video
         ref={videoRef}
         src="/TMS CUBE VIDEO.mp4"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         playsInline
         muted
         loop
         autoPlay
+        preload="auto"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,7,18,0.55)] via-transparent to-transparent" />
     </div>
   );
 }

@@ -69,12 +69,12 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export default function TrustBar() {
   return (
-    <Section className="!py-16 border-y" style={{ borderColor: "var(--hairline-06)" }}>
+    <Section wave="stats" className="!py-16 border-y" style={{ borderColor: "var(--hairline-06)" }}>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-center font-mono text-[11px] tracking-[0.25em] uppercase text-white/35 mb-10"
+        className="trustbar-heading text-center font-mono text-[11px] tracking-[0.25em] uppercase text-white/35 mb-10"
       >
         Trusted for delivery, discretion & scale
       </motion.p>
@@ -89,7 +89,7 @@ export default function TrustBar() {
             className="text-center"
           >
             <AnimatedNumber value={s.value} suffix={s.suffix} />
-            <div className="font-mono text-[10px] tracking-widest uppercase mt-1.5 text-white/45">{s.label}</div>
+            <div className="trustbar-label font-mono text-[10px] tracking-widest uppercase mt-1.5 text-white/45">{s.label}</div>
           </motion.div>
         ))}
       </div>

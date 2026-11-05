@@ -9,15 +9,24 @@ export default function Loader({ onDone }: { onDone: () => void }) {
   useEffect(() => {
     const start = performance.now();
     const duration = 1400;
-    let raf: number;
+    let raf = 0;
+    let timeoutId: number | undefined;
+
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / duration);
       setProgress(p);
       if (p < 1) raf = requestAnimationFrame(tick);
-      else setTimeout(() => setDone(true), 250);
+      else timeoutId = window.setTimeout(() => setDone(true), 250);
     };
+
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   return (

@@ -30,8 +30,8 @@ export default function Testimonials() {
             className="glass rounded-3xl p-10 text-center hover-card"
             style={{ perspective: 1000 }}
           >
-            <p className="font-display text-[19px] md:text-[22px] leading-relaxed text-white/90">"{t.quote}"</p>
-            <div className="mt-6 font-mono text-[12px] tracking-wide text-white/50">{t.name} · {t.org}</div>
+            <p className="testimonial-quote font-display text-[19px] md:text-[22px] leading-relaxed text-white/90">"{t.quote}"</p>
+            <div className="testimonial-attribution mt-6 font-mono text-[12px] tracking-wide text-white/50">{t.name} · {t.org}</div>
           </motion.div>
         </AnimatePresence>
         <div className="flex justify-center gap-3 mt-6">

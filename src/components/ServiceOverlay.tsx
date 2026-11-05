@@ -3202,7 +3202,7 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
           }}
         >
           <motion.div
-            className="fixed top-0 left-0 z-[9999] flex min-h-[0] w-full h-[100dvh] sm:top-1/2 sm:left-1/2 sm:w-[95vw] sm:max-w-[1100px] sm:h-[min(85vh,900px)] sm:-translate-x-1/2 sm:-translate-y-1/2 flex-col overflow-hidden rounded-none sm:rounded-[30px] border border-white/10 bg-[var(--glass-surface)] shadow-[0_40px_120px_rgba(56,189,248,0.28)] backdrop-blur-[18px]"
+            className="service-overlay-panel fixed top-0 left-0 z-[9999] flex min-h-[0] w-full h-[100dvh] sm:top-1/2 sm:left-1/2 sm:w-[95vw] sm:max-w-[1100px] sm:h-[min(85vh,900px)] sm:-translate-x-1/2 sm:-translate-y-1/2 flex-col overflow-hidden rounded-none sm:rounded-[30px] border border-white/10 bg-[var(--glass-surface)] shadow-[0_40px_120px_rgba(56,189,248,0.28)] backdrop-blur-[18px]"
             variants={PANEL_VARIANTS}
           >
             <div className="absolute inset-0 pointer-events-none">

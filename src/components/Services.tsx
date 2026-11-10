@@ -31,9 +31,13 @@ const SERVICES: ServiceCardData[] = [
   { icon: HiOutlineCircleStack, title: "Enterprise Solutions", desc: "Building intelligent operating layers for organizations of the future." },
   { icon: HiOutlineCpuChip, title: "Semiconductors", desc: "Engineering the silicon foundations of intelligent technology through specialized computing architectures and embedded processing." },
   { icon: HiOutlineSparkles, title: "Space & Aerospace", desc: "Engineering intelligent systems for the future of flight through aerospace simulation, avionics, flight intelligence, and embedded computing." },
-  { icon: HiOutlineAcademicCap, title: "Pharmaceuticals", desc: "Discovering, developing and manufacturing the medicines of tomorrow with AI, biological science, computational discovery, and pharmaceutical engineering." },
+  { icon: PharmaceuticalsIcon, title: "Pharmaceuticals", desc: "Discovering, developing and manufacturing the medicines of tomorrow with AI, biological science, computational discovery, and pharmaceutical engineering." },
   { icon: HiOutlineSwatch, title: "Camera & Imaging", desc: "Engineering imaging systems that perceive, interpret and understand the world through computational vision and sensor fusion." },
 ];
+
+function PharmaceuticalsIcon() {
+  return <img src="/assets/pharmaceuticals-service-icon.png" alt="" className="service-card__pharmaceuticals-image" />;
+}
 
 function ServiceCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: number; onLearnMore: () => void; active: boolean }) {
   return (
@@ -55,7 +59,7 @@ function ServiceCard({ s, i, onLearnMore, active }: { s: ServiceCardData; i: num
       aria-label={`${s.title}. Learn more`}
       className={`service-card group${active ? " service-card--active" : ""}`}
     >
-      <span className="service-card__icon" aria-hidden="true">
+      <span className={`service-card__icon${s.title === "Pharmaceuticals" ? " service-card__icon--image" : ""}`} aria-hidden="true">
         <s.icon />
       </span>
       <span className="service-card__separator" aria-hidden="true" />

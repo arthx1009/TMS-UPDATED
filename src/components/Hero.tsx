@@ -61,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="hero-reference__visual relative h-[380px] md:h-[520px] lg:h-[760px] -mt-4 md:-mt-8"
+          className="hero-reference__visual relative h-[420px] md:h-[580px] lg:h-[820px] -mt-4 md:-mt-8"
         >
           <Scene3D />
         </motion.div>
@@ -71,7 +71,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="hero-reference__scroll absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hero-reference__scroll absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="font-mono text-[10px] tracking-widest uppercase">Scroll</span>
         <motion.span animate={{ y: [0, 5, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="hero-reference__scroll-chevron" aria-hidden="true">⌄</motion.span>

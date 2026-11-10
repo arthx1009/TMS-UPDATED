@@ -37,13 +37,7 @@ const ADVISORS: Person[] = [
     badge: "Advisory",
     initials: "AJ",
   },
-  {
-    name: "Meenakshi R",
-    title: "Growth Advisor",
-    bio: "Shapes market strategy, partnerships, and scalable expansion with an emphasis on long-term value.",
-    badge: "Growth",
-    initials: "MR",
-  },
+ 
   {
     name: "Saharika Teppa",
     title: "Innovation Advisor",

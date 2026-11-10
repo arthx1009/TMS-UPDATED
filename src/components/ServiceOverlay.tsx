@@ -3242,7 +3242,7 @@ export default function ServiceOverlay({ service, open, onClose }: ServiceOverla
               </button>
             </div>
 
-            <div className={`modal-body flex-1 min-h-0 max-h-full ${brochureOpen ? "overflow-hidden" : "overflow-y-auto"} overscroll-contain touch-pan-y px-4 py-5 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:px-6 sm:py-8 md:px-8 lg:px-10 scrollbar-thin scrollbar-thumb-cyan-400/30 scrollbar-track-transparent`}>
+            <div data-lenis-prevent className={`modal-body flex-1 min-h-0 max-h-full ${brochureOpen ? "overflow-hidden" : "overflow-y-auto"} overscroll-contain touch-pan-y px-4 py-5 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] sm:px-6 sm:py-8 md:px-8 lg:px-10 scrollbar-thin scrollbar-thumb-cyan-400/30 scrollbar-track-transparent`}>
               {service.title === "Software Intelligence" ? (
                 <SoftwareEngineeringPanel />
               ) : service.title === "AI & Machine Learning" ? (

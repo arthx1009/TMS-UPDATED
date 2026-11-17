@@ -4,46 +4,85 @@ import { Section } from "./UI";
 type Person = {
   name: string;
   title: string;
-  bio: string;
-  badge: string;
   initials: string;
+  description: string;
   avatar?: "female" | "male";
 };
 
 const EXECUTIVES: Person[] = [
   {
-    name: "S Sahera Tazeen",
-    title: "Founder & Managing Director",
-    bio: "Shaping vision, driving strategic growth, and building long-term value through innovation, trusted partnerships, and a commitment to excellence.",
-    badge: "Strategic Vision",
-    initials: "ST",
-    avatar: "female",
+    name: "MANOJ KUMAR S",
+    title: "MANAGING DIRECTOR & CHIEF EXECUTIVE OFFICER",
+    initials: "MK",
+    description: "Leading organizational strategy, innovation, and long-term business growth.",
+    avatar: "male",
   },
   {
-    name: "S Manoj Kumar",
-    title: "Founder & Chief Executive Officer",
-    bio: "Leading with purpose, fostering innovation, and delivering reliable technology solutions through excellence in execution and continuous improvement.",
-    badge: "Executive Lead",
-    initials: "MK",
-    avatar: "male",
+    name: "SAHERA TAZEEN S",
+    title: "DIRECTOR",
+    initials: "ST",
+    description: "Supporting corporate strategy, leadership, and organizational development.",
+    avatar: "female",
   },
 ];
 
-const ADVISORS: Person[] = [
+const BOARD_GROUPS: { title: string; members: Person[] }[] = [
   {
-    name: "Agishan J",
-    title: "Advisory Partner",
-    bio: "Brings deep expertise in transformation, technology leadership, and enterprise modernization.",
-    badge: "Advisory",
-    initials: "AJ",
+    title: "Executive Directors",
+    members: [
+      {
+        name: "PRIYANKA S",
+        title: "EXECUTIVE DIRECTOR",
+        initials: "PS",
+        description: "Supporting executive operations and strategic business growth.",
+      },
+      {
+        name: "SAHARIKA T",
+        title: "EXECUTIVE DIRECTOR",
+        initials: "ST",
+        description: "Driving strategic initiatives and operational excellence.",
+      },
+    ],
   },
- 
   {
-    name: "Saharika Teppa",
-    title: "Innovation Advisor",
-    bio: "Guides product innovation, research direction, and next-generation digital experiences.",
-    badge: "Innovation",
-    initials: "ST",
+    title: "Non-Executive Directors",
+    members: [
+      {
+        name: "SAFA SALSABEEL Z",
+        title: "NON-EXECUTIVE DIRECTOR",
+        initials: "SZ",
+        description: "Supporting corporate governance and strategic oversight.",
+      },
+      {
+        name: "DEVI SREE N B",
+        title: "NON-EXECUTIVE DIRECTOR",
+        initials: "DB",
+        description: "Contributing independent perspectives to board-level decisions.",
+      },
+    ],
+  },
+  {
+    title: "Independent Directors",
+    members: [
+      {
+        name: "MAHAMMED BAASHIK",
+        title: "INDEPENDENT DIRECTOR",
+        initials: "MB",
+        description: "Providing objective guidance and independent board oversight.",
+      },
+      {
+        name: "AGISHAN J",
+        title: "INDEPENDENT DIRECTOR",
+        initials: "AJ",
+        description: "Supporting effective governance and strategic decision-making.",
+      },
+      {
+        name: "SURYA BHAGAWAN",
+        title: "INDEPENDENT DIRECTOR",
+        initials: "SB",
+        description: "Offering objective guidance on corporate matters.",
+      },
+    ],
   },
 ];
 
@@ -75,29 +114,26 @@ function LeadershipCard({ person, index }: { person: Person; index: number }) {
           <div className={`leadership-card__avatar${person.avatar ? " leadership-card__avatar--executive" : ""}`}>
             <ProfileAvatar person={person} />
           </div>
-          <span className="leadership-card__profile-divider" />
-          <div className="leadership-card__badge">
-            {person.badge}
-          </div>
         </div>
 
         <h3 className="leadership-card__name">{person.name}</h3>
         <p className="leadership-card__title">{person.title}</p>
         <span className="leadership-card__separator" />
-        <p className="leadership-card__bio">{person.bio}</p>
+        <p className="leadership-card__bio">{person.description}</p>
       </div>
       <div className="leadership-card__glow" />
     </motion.article>
   );
 }
 
-function LeadershipSectionHeading({ title, description }: { title: string; description: string }) {
+function LeadershipSectionHeading({ title, variant }: { title: string; variant?: "main" | "subsection" | "independent" }) {
+  const variantClass = variant ? ` leadership-section-heading--${variant}` : "";
+
   return (
-    <div className="leadership-section-heading">
+    <div className={`leadership-section-heading${variantClass}`}>
       <span className="leadership-section-heading__rule" />
       <h3 className="leadership-section-heading__title">{title}</h3>
       <span className="leadership-section-heading__rule" />
-      <p className="leadership-section-heading__description">{description}</p>
     </div>
   );
 }
@@ -126,22 +162,10 @@ export default function Leadership() {
           >
             Meet the leaders shaping TarvyX Mind Systems.
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="leadership-page__description"
-          >
-            Meet the leaders driving innovation, strategy, and long-term growth at TarvyX Mind Systems.
-          </motion.p>
         </div>
 
         <div className="leadership-page__group leadership-page__group--executive">
-          <LeadershipSectionHeading
-            title="Executive Leadership"
-            description="Strategic minds guiding delivery, trust, and long-term growth across every engagement."
-          />
+          <LeadershipSectionHeading title="Executive Leadership" />
           <div className="leadership-page__executives">
             {EXECUTIVES.map((person, index) => (
               <LeadershipCard key={person.name} person={person} index={index} />
@@ -149,16 +173,31 @@ export default function Leadership() {
           </div>
         </div>
 
-        <div className="leadership-page__group leadership-page__group--advisors">
-          <LeadershipSectionHeading
-            title="Board of Advisors"
-            description="Experienced advisors supporting innovation, growth, and strategic direction."
-          />
-          <div className="leadership-page__advisors">
-            {ADVISORS.map((person, index) => (
-              <LeadershipCard key={person.name} person={person} index={index + 2} />
-            ))}
-          </div>
+        <div className="leadership-page__group leadership-page__group--board">
+          <LeadershipSectionHeading title="Board of Directors" variant="main" />
+          {BOARD_GROUPS.map((group, groupIndex) => (
+            <div className="leadership-page__board-category" key={group.title}>
+              <LeadershipSectionHeading
+                title={group.title}
+                variant={group.title === "Independent Directors" ? "independent" : "subsection"}
+              />
+              <div
+                className={`leadership-page__executives${
+                  group.title === "Independent Directors"
+                    ? " leadership-page__executives--three"
+                    : " leadership-page__executives--compact"
+                }`}
+              >
+                {group.members.map((person, memberIndex) => (
+                  <LeadershipCard
+                    key={person.name}
+                    person={person}
+                    index={EXECUTIVES.length + groupIndex * 3 + memberIndex}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </Section>

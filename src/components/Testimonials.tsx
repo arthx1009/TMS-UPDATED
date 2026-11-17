@@ -4,7 +4,7 @@ import { Section, SectionTitle } from "./UI";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
 const TESTIMONIALS = [
-  { quote: "TMS delivered our AI platform ahead of schedule, with a level of rigor our internal team hadn't seen before.", name: "VP Engineering", org: "Enterprise SaaS Client" },
+  { quote: "TMS delivered our AI platform ahead of schedule, with a level of rigor our internal team hadn't seen before.", name: "VP Engineering", org: "Enterprise SaaS " },
   { quote: "The confidentiality practices gave our legal team full confidence to move forward with a sensitive automotive build.", name: "Director of Product", org: "Automotive OEM" },
   { quote: "Their research group's embeddings work directly improved our search relevance by a wide margin.", name: "Head of Data", org: "Retail Platform" },
 ];

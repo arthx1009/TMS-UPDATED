@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section, SectionTitle, MagneticButton } from "./UI";
 import {
-  HiOutlineMapPin,
   HiOutlinePhone,
   HiOutlineEnvelope,
   HiOutlineChatBubbleLeftEllipsis,
@@ -11,51 +9,86 @@ import {
   FaLinkedinIn,
   FaGithub,
   FaInstagram,
-  FaYoutube,
   FaXTwitter,
 } from "react-icons/fa6";
 import logoUrl from "../assets/tms-logo.png";
 import RedWaves from "./RedWaves";
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
   return (
     <Section id="contact" wave="contact" className="border-t" style={{ borderColor: "var(--hairline-06)" }}>
       <SectionTitle eyebrow="Contact" title="Tell us what you're building." sub="We reply within one business day. All discussions are covered under NDA on request." />
       <div className="grid lg:grid-cols-5 gap-6">
         <div className="lg:col-span-2 flex flex-col gap-4">
           {[
-            { icon: HiOutlineMapPin, label: "Office", value: "Bangalore, Karnataka, India" },
             { icon: HiOutlinePhone, label: "Phone", value: "+91 8374144574 • +91 9391777916" },
             { icon: HiOutlineEnvelope, label: "Email", value: "hello@tarvyxmindsystems.com" },
-            { icon: HiOutlineChatBubbleLeftEllipsis, label: "WhatsApp", value: "Start a chat" },
-          ].map((c) => (
-            <motion.div key={c.label} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass glass-card hover-card rounded-2xl p-4 flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(var(--color-cyan-rgb), 0.1)" }}>
-                <c.icon className="w-4.5 h-4.5" style={{ color: "var(--color-electric)" }} />
-              </div>
-              <div>
-                <div className="contact-label font-mono text-[10px] uppercase tracking-widest text-white/40">{c.label}</div>
-                <div className="text-sm font-medium">{c.value}</div>
-              </div>
-            </motion.div>
-          ))}
+            { icon: HiOutlineChatBubbleLeftEllipsis, label: "WhatsApp", value: "Start a chat", href: "https://api.whatsapp.com/send?phone=918374144574" },
+          ].map((c) => {
+            const cardContent = (
+              <>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(var(--color-cyan-rgb), 0.1)" }}>
+                  <c.icon className="w-4.5 h-4.5" style={{ color: "var(--color-electric)" }} />
+                </div>
+                <div>
+                  <div className="contact-label font-mono text-[10px] uppercase tracking-widest text-white/40">{c.label}</div>
+                  <div className="text-sm font-medium">{c.value}</div>
+                </div>
+              </>
+            );
+            const cardProps = {
+              initial: { opacity: 0, x: -16 },
+              whileInView: { opacity: 1, x: 0 },
+              viewport: { once: true },
+              className: "glass glass-card hover-card rounded-2xl p-4 flex items-center gap-3 group",
+            };
+
+            return c.href ? (
+              <motion.a
+                key={c.label}
+                {...cardProps}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Start a WhatsApp chat"
+              >
+                {cardContent}
+              </motion.a>
+            ) : (
+              <motion.div key={c.label} {...cardProps}>
+                {cardContent}
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.form
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            const fullName = String(formData.get("fullName") ?? "");
+            const email = String(formData.get("email") ?? "");
+            const company = String(formData.get("company") ?? "");
+            const message = String(formData.get("message") ?? "");
+            const subject = encodeURIComponent(`Website inquiry from ${fullName}`);
+            const body = encodeURIComponent(
+              `Name: ${fullName}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`,
+            );
+
+            window.location.href = `mailto:hello@tarvyxmindsystems.com?subject=${subject}&body=${body}`;
+          }}
           className="lg:col-span-3 glass glass-card hover-card rounded-2xl p-6 flex flex-col gap-4 group"
         >
           <div className="grid sm:grid-cols-2 gap-4">
-            <input required placeholder="Full name" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
-            <input required type="email" placeholder="Work email" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+            <input required name="fullName" placeholder="Full name" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+            <input required name="email" type="email" placeholder="Work email" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
           </div>
-          <input placeholder="Company" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
-          <textarea required rows={4} placeholder="What are you building?" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors resize-none" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
-          <MagneticButton className="self-start !py-3 !px-7">{sent ? "Sent — we'll be in touch" : "Send message"}</MagneticButton>
+          <input name="company" placeholder="Company" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+          <textarea required name="message" rows={4} placeholder="What are you building?" className="contact-field bg-white/[0.04] border rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--color-electric)] transition-colors resize-none" style={{ borderColor: "rgba(var(--color-electric-rgb), 0.10)" }} />
+          <MagneticButton className="self-start !py-3 !px-7">Send message</MagneticButton>
         </motion.form>
       </div>
     </Section>
@@ -64,11 +97,10 @@ export function Contact() {
 
 export function Footer() {
   const socialLinks = [
-    { icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
-    { icon: FaGithub, label: "GitHub", href: "#" },
-    { icon: FaInstagram, label: "Instagram", href: "#" },
-    { icon: FaYoutube, label: "YouTube", href: "#" },
-    { icon: FaXTwitter, label: "X", href: "#" },
+    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://www.linkedin.com/company/tarvyxmindsystems/" },
+    { icon: FaGithub, label: "GitHub", href: "https://github.com/arthx1009" },
+    { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/tarvyx.edu_tech?avpt=bDdtZjZhcGIxazVx" },
+    { icon: FaXTwitter, label: "X", href: "https://x.com/Tarvyxed" },
   ];
 
   return (
@@ -105,7 +137,6 @@ export function Footer() {
             <p className="mt-3 text-sm leading-7" style={{ color: "var(--color-text-muted)" }}>Become part of a culture driven by creativity, engineering excellence, and continuous innovation..</p>
           </div>
           <div className="flex flex-wrap gap-3 relative z-10">
-            <MagneticButton className="!py-3 !px-6">Careers</MagneticButton>
             <MagneticButton
               variant="ghost"
               className="!py-3 !px-6"
@@ -157,6 +188,9 @@ export function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit TMS on ${social.label}`}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
@@ -213,12 +247,12 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative mt-6 flex flex-col gap-4 border-t border-white/5 pt-8 text-[12px] text-white/35 sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: "var(--hairline-06)" }}>
+      <div className="relative mt-6 grid grid-cols-1 gap-4 border-t border-white/5 pt-8 text-[12px] text-white/35 md:grid-cols-[minmax(0,1fr)_minmax(0,520px)] md:items-center" style={{ borderColor: "var(--hairline-06)" }}>
         <div>
           <div className="footer-copyright text-sm font-semibold text-white">© {new Date().getFullYear()} TarvyX Mind Systems</div>
           <div className="footer-tagline mt-2 text-[12px] text-white/55">Crafted with Precision • Engineered for the Future</div>
         </div>
-        <div className="footer-location text-[12px] font-mono text-white/45">Bangalore,Karnataka -India • Building the Future</div>
+        <div className="footer-location w-full break-words text-right text-[12px] font-mono text-white/45">Site No. 21, Khatha No. 475, Next Cross of Sampigehalli Police Station, Basavalingappa Nagar, Sampigehalli Village, Yelahanka Hobli, Bangalore North, Karnataka - 560064, India</div>
       </div>
     </footer>
   );

@@ -168,7 +168,7 @@ export function Footer() {
               <div className="absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(255,85,89,0.12),transparent)]" />
               <img src={logoUrl} alt="TMS" className="relative h-7 w-auto" />
             </motion.div>
-            <span className="footer-brand font-display text-sm font-semibold text-white">TarvyX Mind Systems</span>
+            <span className="footer-brand font-display text-sm font-semibold text-white">Tarvyx Mind System Pvt Ltd</span>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -249,7 +249,7 @@ export function Footer() {
 
       <div className="relative mt-6 grid grid-cols-1 gap-4 border-t border-white/5 pt-8 text-[12px] text-white/35 md:grid-cols-[minmax(0,1fr)_minmax(0,520px)] md:items-center" style={{ borderColor: "var(--hairline-06)" }}>
         <div>
-          <div className="footer-copyright text-sm font-semibold text-white">© {new Date().getFullYear()} TarvyX Mind Systems</div>
+          <div className="footer-copyright text-sm font-semibold text-white">© {new Date().getFullYear()} Tarvyx Mind System Pvt Ltd</div>
           <div className="footer-tagline mt-2 text-[12px] text-white/55">Crafted with Precision • Engineered for the Future</div>
         </div>
         <div className="footer-location w-full break-words text-right text-[12px] font-mono text-white/45">Site No. 21, Khatha No. 475, Next Cross of Sampigehalli Police Station, Basavalingappa Nagar, Sampigehalli Village, Yelahanka Hobli, Bangalore North, Karnataka - 560064, India</div>
